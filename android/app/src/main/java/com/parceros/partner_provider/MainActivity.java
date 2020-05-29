@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.parceros.partner_provider;
 
 import android.os.Bundle;
 
