@@ -35,12 +35,21 @@ export class AppComponent {
         });
 
 
+        // this.checkDarkTheme();
         console.log('Initializing HomePage');
         this.configureNotifications();
     }
 
     public async sendRegistrationToServer(token: PushNotificationToken) {
         await this.platformService.sendRegistrationToServer(token);
+    }
+
+    checkDarkTheme() {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        console.log('prefersDark', prefersDark);
+        if (prefersDark.matches) {
+            document.body.classList.toggle('dark');
+        }
     }
 
     public configureNotifications() {
