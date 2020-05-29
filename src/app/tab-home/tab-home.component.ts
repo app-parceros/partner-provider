@@ -19,7 +19,9 @@ export class TabHomeComponent implements OnInit {
 
     changeMode() {
         this.darkMode = !this.darkMode;
-        document.body.classList.toggle('dark');
+        if (this.darkMode) {
+            document.body.classList.toggle('dark');
+        }
     }
 
 }

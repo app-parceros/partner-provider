@@ -47,9 +47,9 @@ export class AppComponent {
     checkDarkTheme() {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
         console.log('prefersDark', prefersDark);
-        if (prefersDark.matches) {
+        /*if (prefersDark.matches) {
             document.body.classList.toggle('dark');
-        }
+        }*/
     }
 
     public configureNotifications() {
