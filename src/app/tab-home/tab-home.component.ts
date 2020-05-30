@@ -17,11 +17,13 @@ export class TabHomeComponent implements OnInit {
     ngOnInit() {
     }
 
-    changeMode() {
-        this.darkMode = !this.darkMode;
-        if (this.darkMode) {
+    changeMode(event) {
+        document.body.classList.toggle('dark');
+        /*if (event.returnValue) {
             document.body.classList.toggle('dark');
-        }
+        } else {
+            document.body.classList.toggle('dark');
+        }*/
     }
 
 }
