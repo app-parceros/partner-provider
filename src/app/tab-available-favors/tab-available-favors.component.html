@@ -8,8 +8,8 @@
 
 <ion-content [fullscreen]="true">
     <ion-list>
-        <ion-item-sliding *ngFor="let favor of favorsResultSet.content">
-            <ion-item>
+        <ion-item-sliding [routerLink]="'favor-detail'" *ngFor="let favor of favorsResultSet?.content">
+            <ion-item >
                 <div>
                     <ion-label>{{favor.name}}</ion-label>
                     <ion-text>{{favor.description}}</ion-text>
@@ -21,6 +21,6 @@
         </ion-item-sliding>
     </ion-list>
 
-    <button [routerLink]="'favor-detail'"> view detail</button>
+    <!--<button [routerLink]="'favor-detail'"> view detail</button>-->
 
 </ion-content>
