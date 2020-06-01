@@ -135,12 +135,13 @@ export class GoogleMapsComponent implements OnInit {
 
             const script = this.renderer.createElement('script');
             script.id = 'googleMaps';
+            script.src = 'https://partner-platform-dev.herokuapp.com/maps/api/js?&callback=mapInit';
 
-            if (this.apiKey) {
-                script.src = 'https://maps.googleapis.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
-            } else {
-                script.src = 'https://maps.googleapis.com/maps/api/js?callback=mapInit';
-            }
+            /*if (this.apiKey) {
+            script.src = 'https://partner-platform-dev.herokuapp.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
+            /*} else {
+                script.src = 'https://partner-platform-dev.herokuapp.com/maps/api/js?callback=mapInit';
+           /* }*/
 
             this.renderer.appendChild(this.document.body, script);
 
