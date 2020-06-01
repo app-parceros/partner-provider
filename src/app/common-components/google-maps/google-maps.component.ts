@@ -1,8 +1,9 @@
-/// <reference types="@types/googlemaps" />
+/// <reference types='@types/googlemaps' />
 import {Component, ElementRef, Inject, Input, OnInit, Renderer2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import { Plugins } from '@capacitor/core';
-const { Geolocation, Network } = Plugins;
+import {Plugins} from '@capacitor/core';
+
+const {Geolocation, Network} = Plugins;
 
 @Component({
     selector: 'app-google-maps',
@@ -38,7 +39,7 @@ export class GoogleMapsComponent implements OnInit {
 
             this.loadSDK().then((res) => {
 
-              this.initMap().then((res2: any) => {
+                this.initMap().then((res2: any) => {
                     resolve(true);
                 }, (err) => {
                     reject(err);
@@ -178,11 +179,17 @@ export class GoogleMapsComponent implements OnInit {
     public addMarker(lat: number, lng: number): void {
 
         const latLng = new google.maps.LatLng(lat, lng);
+        const icon = {
+            url: './assets/icon/favicon.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
 
         const marker = new google.maps.Marker({
             map: this.map,
             animation: google.maps.Animation.DROP,
-            position: latLng
+            position: latLng,
+            icon,
+            label: 'La casa de don pedro'
         });
 
         this.markers.push(marker);
