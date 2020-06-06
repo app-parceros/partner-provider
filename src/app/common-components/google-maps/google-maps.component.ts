@@ -27,6 +27,24 @@ export class GoogleMapsComponent implements OnInit {
 
         this.init().then((res) => {
             console.log('Google Maps ready.');
+
+            const icon = {
+                url: './assets/icon/favicon.png',
+                scaledSize: new google.maps.Size(50, 50)
+            };
+
+            const latLng = new google.maps.LatLng(4.725758098247824, -74.03076787201982);
+            const marker = new google.maps.Marker({
+                map: this.map,
+                animation: google.maps.Animation.DROP,
+                position: latLng,
+                icon,
+                label: 'Doña jimena'
+            });
+
+            this.markers.push(marker);
+
+
         }, (err) => {
             console.log(err);
         });
@@ -125,28 +143,16 @@ export class GoogleMapsComponent implements OnInit {
     }
 
     private injectSDK(): Promise<any> {
-
         return new Promise((resolve, reject) => {
-
             window['mapInit'] = () => {
                 this.mapsLoaded = true;
                 resolve(true);
             };
-
             const script = this.renderer.createElement('script');
             script.id = 'googleMaps';
             script.src = 'https://partner-platform-dev.herokuapp.com/maps/api/js?&callback=mapInit';
-
-            /*if (this.apiKey) {
-            script.src = 'https://partner-platform-dev.herokuapp.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
-            /*} else {
-                script.src = 'https://partner-platform-dev.herokuapp.com/maps/api/js?callback=mapInit';
-           /* }*/
-
             this.renderer.appendChild(this.document.body, script);
-
         });
-
     }
 
     private initMap(): Promise<any> {
@@ -178,19 +184,15 @@ export class GoogleMapsComponent implements OnInit {
     }
 
     public addMarker(lat: number, lng: number): void {
-
         const latLng = new google.maps.LatLng(lat, lng);
-        const icon = {
-            url: './assets/icon/favicon.png',
-            scaledSize: new google.maps.Size(50, 50)
-        };
-
+        console.log('lat', lat);
+        console.log('lng', lng);
         const marker = new google.maps.Marker({
             map: this.map,
             animation: google.maps.Animation.DROP,
             position: latLng,
-            icon,
-            label: 'La casa de don pedro'
+            // icon,
+            // label: 'Doña jimena'
         });
 
         this.markers.push(marker);

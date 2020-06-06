@@ -29,11 +29,9 @@ export class AppComponent {
     }
 
     async initializeApp() {
-        this.platform.ready().then(() => {
-            this.statusBar.styleDefault();
-            this.splashScreen.hide();
-        });
-
+        await this.platform.ready();
+        this.statusBar.styleDefault();
+        this.splashScreen.hide();
 
         // this.checkDarkTheme();
         console.log('Initializing HomePage');

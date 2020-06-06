@@ -10,9 +10,14 @@
     <ion-list>
         <ion-item-sliding [routerLink]="'favor-detail'" *ngFor="let favor of favorsResultSet?.content">
             <ion-item >
-                <div>
-                    <ion-label>{{favor.name}}</ion-label>
-                    <ion-text>{{favor.description}}</ion-text>
+                <div class="favor-item">
+                    <ion-icon name="square" class="favor-item__icon"></ion-icon>
+                    <ion-icon name="square" class="favor-item__arrow"></ion-icon>
+                    <ion-label class="favor-item__reward">$20.000</ion-label>
+                    <ion-label class="favor-item__distance">10Km</ion-label>
+                    <ion-label class="favor-item__time">50min</ion-label>
+                    <!--<ion-label>{{favor.name}}</ion-label>
+                    <ion-text>{{favor.description}}</ion-text>-->
                 </div>
             </ion-item>
             <ion-item-options side="end">

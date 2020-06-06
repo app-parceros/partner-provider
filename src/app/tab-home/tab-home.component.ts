@@ -8,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class TabHomeComponent implements OnInit {
 
     public darkMode = true;
+    public workRadio;
 
     constructor() {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
