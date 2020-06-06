@@ -25,8 +25,13 @@ export class RestApiPlatformService {
         return this.httpClient.get<any>(url).toPromise();
     }
 
-    getFavors(): Promise<ResultSet<Favor>> {
-        const url = `${this.platformConfig.apiUrl}/api/favor`;
+    getFavors(position: any): Promise<ResultSet<Favor>> {
+        const url = `${this.platformConfig.apiUrl}/api/favor?lat=${position.lat}&lng=${position.lng}&radius=1380`;
         return this.httpClient.get<any>(url).toPromise();
+    }
+
+    async createFavor(favor: any) {
+        const url = `${this.platformConfig.apiUrl}/api/favor`;
+        return this.httpClient.post<any>(url, favor).toPromise();
     }
 }

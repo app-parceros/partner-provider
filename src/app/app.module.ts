@@ -18,6 +18,7 @@ import {RestApiModule} from './rest-api/rest-api.module';
         IonicModule.forRoot(),
         AppRoutingModule,
         RestApiModule.forRoot({apiUrl: 'https://partner-platform-dev.herokuapp.com'})
+        // RestApiModule.forRoot({apiUrl: 'http://localhost:3000'})
     ],
     providers: [
         StatusBar,

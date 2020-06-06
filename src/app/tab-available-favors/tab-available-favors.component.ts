@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {RestApiPlatformService} from '../rest-api/rest-api-platform.service';
 import {ResultSet} from '../common/models/ResultSet';
 import {Favor} from '../common/models/Favor';
+import { Plugins } from '@capacitor/core';
+
+const { Geolocation } = Plugins;
 
 @Component({
     selector: 'app-tab-available-favors',
@@ -15,7 +18,12 @@ export class TabAvailableFavorsComponent implements OnInit {
     }
 
     async ngOnInit() {
-        this.favorsResultSet = await this.platformService.getFavors();
+        const coordinates = await Geolocation.getCurrentPosition();
+        console.log('Current', coordinates);
+        this.favorsResultSet = await this.platformService.getFavors({
+            lat: coordinates.coords.latitude,
+            lng: coordinates.coords.longitude
+        });
     }
 
     public takeFavor(favor: Favor) {
