@@ -155,6 +155,17 @@ export class GoogleMapsComponent implements OnInit {
         });
     }
 
+
+    /**
+     * try{
+     * const result = await Geolocation.getCurrentPosition();
+     *  other sentence
+     * }
+     * catch(){
+     * console.log();
+     * }
+     **/
+
     private initMap(): Promise<any> {
 
         return new Promise((resolve, reject) => {
