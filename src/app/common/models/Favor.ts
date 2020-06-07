@@ -1,8 +1,16 @@
 // export namespace Common {
-export interface Favor {
+import {Guid} from './Guid';
+import {ILocation} from './Location';
+import {IFavorStep} from './FavorStep';
+
+export interface IFavor {
+    id?: Guid;
     name: string;
-    id: Guid;
     description: string;
+    location: ILocation;
+    reward: number;
+    creationDate?: string;
+    steps?: IFavorStep[];
 }
 
 // }

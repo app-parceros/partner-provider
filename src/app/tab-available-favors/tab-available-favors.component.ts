@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RestApiPlatformService} from '../rest-api/rest-api-platform.service';
 import {ResultSet} from '../common/models/ResultSet';
-import {Favor} from '../common/models/Favor';
+import {IFavor} from '../common/models/Favor';
 import { Plugins } from '@capacitor/core';
 
 const { Geolocation } = Plugins;
@@ -12,7 +12,7 @@ const { Geolocation } = Plugins;
     styleUrls: ['./tab-available-favors.component.scss'],
 })
 export class TabAvailableFavorsComponent implements OnInit {
-    public favorsResultSet: ResultSet<Favor>;
+    public favorsResultSet: ResultSet<IFavor>;
 
     constructor(private readonly  platformService: RestApiPlatformService) {
     }
@@ -26,7 +26,7 @@ export class TabAvailableFavorsComponent implements OnInit {
         });
     }
 
-    public takeFavor(favor: Favor) {
+    public takeFavor(favor: IFavor) {
         console.log(favor);
     }
 

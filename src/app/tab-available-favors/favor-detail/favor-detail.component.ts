@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {GoogleMapsComponent} from '../../common-components/google-maps/google-maps.component';
 import {RestApiPlatformService} from '../../rest-api/rest-api-platform.service';
+import {IFavor} from '../../common/models/Favor';
 
 @Component({
     selector: 'app-favor-detail',
@@ -19,10 +20,11 @@ export class FavorDetailComponent implements OnInit {
     async addMarker() {
         const center = this.mapComponent.map.getCenter();
         this.mapComponent.addMarker(center.lat(), center.lng());
-        const favor = {
+        const favor: IFavor = {
+            name: 'first favor',
+            description: 'favor description',
+            reward: 1500,
             location: {
-                name: 'name prueba 1',
-                address: 'address prueba 1',
                 position: {
                     lat: center.lat(),
                     lng: center.lng()

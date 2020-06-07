@@ -11,7 +11,7 @@ import {
 } from '@capacitor/core';
 import {RestApiPlatformService} from './rest-api/rest-api-platform.service';
 
-const {PushNotifications, Modals} = Plugins;
+const {PushNotifications, Modals, Geolocation} = Plugins;
 
 @Component({
     selector: 'app-root',
@@ -19,6 +19,8 @@ const {PushNotifications, Modals} = Plugins;
     styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+    private token: PushNotificationToken;
+
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
@@ -36,6 +38,7 @@ export class AppComponent {
         // this.checkDarkTheme();
         console.log('Initializing HomePage');
         this.configureNotifications();
+        this.configureUpdatePosition();
     }
 
     public async sendRegistrationToServer(token: PushNotificationToken) {
@@ -50,6 +53,7 @@ export class AppComponent {
         }*/
     }
 
+
     public configureNotifications() {
 
         // Register with Apple / Google to receive push via APNS/FCM
@@ -60,6 +64,7 @@ export class AppComponent {
             async (token: PushNotificationToken) => {
                 alert('Push registration success, token: ' + token.value);
                 console.log('Push registration success, token: ' + token.value);
+                this.token = token;
                 await this.sendRegistrationToServer(token);
             }
         );
@@ -95,5 +100,19 @@ export class AppComponent {
                 console.log('Push action performed: ' + notification);
             }
         );
+    }
+
+    configureUpdatePosition() {
+        const self = this;
+        Geolocation.watchPosition({
+            enableHighAccuracy: false,
+            maximumAge: 1800000,
+            timeout: 20000
+        }, async position => {
+            await self.platformService.updateUserPosition('ba56e391-2139-437a-b277-7f20d713142a', {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            });
+        });
     }
 }

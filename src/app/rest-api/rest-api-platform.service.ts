@@ -3,7 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {PlatformConfig} from './platform-config';
 import {PushNotificationToken} from '@capacitor/core';
 import {ResultSet} from '../common/models/ResultSet';
-import {Favor} from '../common/models/Favor';
+import {IFavor} from '../common/models/Favor';
+import {IPosition} from '../common/models/Location';
 
 @Injectable({
     providedIn: 'root'
@@ -20,18 +21,18 @@ export class RestApiPlatformService {
         return this.httpClient.post<any>(url, token).toPromise();
     }
 
-    testApi() {
-        const url = `${this.platformConfig.apiUrl}/api/system`;
-        return this.httpClient.get<any>(url).toPromise();
+    updateUserPosition(userId: Guid, position: IPosition) {
+        const url = `${this.platformConfig.apiUrl}/api/user/${userId}/position`;
+        return this.httpClient.post<IPosition>(url, position).toPromise();
     }
 
-    getFavors(position: any): Promise<ResultSet<Favor>> {
+    getFavors(position: any): Promise<ResultSet<IFavor>> {
         const url = `${this.platformConfig.apiUrl}/api/favor?lat=${position.lat}&lng=${position.lng}&radius=1380`;
         return this.httpClient.get<any>(url).toPromise();
     }
 
-    async createFavor(favor: any) {
+    async createFavor(favor: IFavor) {
         const url = `${this.platformConfig.apiUrl}/api/favor`;
-        return this.httpClient.post<any>(url, favor).toPromise();
+        return this.httpClient.post<IFavor>(url, favor).toPromise();
     }
 }
