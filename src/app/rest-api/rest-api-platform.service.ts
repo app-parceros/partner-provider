@@ -35,4 +35,9 @@ export class RestApiPlatformService {
         const url = `${this.platformConfig.apiUrl}/api/favor`;
         return this.httpClient.post<IFavor>(url, favor).toPromise();
     }
+
+    async sendPhone(phoneNumber) {
+        const url = `${this.platformConfig.apiUrl}/api/auth/phone`;
+        return this.httpClient.post<IFavor>(url, {phone: `+57${phoneNumber}`}).toPromise();
+    }
 }

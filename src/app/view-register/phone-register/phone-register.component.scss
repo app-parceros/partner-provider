@@ -1,0 +1,33 @@
+@import '../../../theme/variables.scss';
+
+.phone-register {
+  &__header {
+    background: rgba(var(--ion-color-primary-rgb), 0.1);
+    display: flex;
+    padding: var(--app-space-inset-s) var(--app-space-inset-m);
+    font-size: var(--app-font-size-body-small);
+  }
+
+  &__header-title {
+    font-size: var(--app-font-size-body);
+    font-family: var(--app-font-family-secondary);
+    color: var(--ion-color-tertiary);
+  }
+
+  &__content {
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: var(--app-space-inset-m) var(--app-space-inset-m) var(--app-space-inset-m) var(--app-space-inset-m);
+    font-size: var(--app-font-size-caption);
+
+    p {
+      text-align: center;
+    }
+  }
+
+  &__content-title {
+    font-weight: bold;
+  }
+}

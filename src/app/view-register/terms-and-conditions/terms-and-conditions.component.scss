@@ -2,12 +2,19 @@
 
 .terms-and-conditions {
   &__header {
-    background: rgba(var( --ion-color-primary-rgb), 0.1);
+    background: rgba(var(--ion-color-primary-rgb), 0.1);
     display: flex;
-    flex-direction: column;
     height: 40%;
-    padding: 23% var(--app-space-inset-m) var(--app-space-inset-m) var(--app-space-inset-m);
+    padding: var(--app-space-inset-m);
     font-size: var(--app-font-size-body-small);
+  }
+
+  &__header-content {
+    align-self: flex-end;
+
+    p {
+      display: block;
+    }
   }
 
   &__header-title {

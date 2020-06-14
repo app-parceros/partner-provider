@@ -6,6 +6,11 @@
       "accept_and_continue": "Aceptar y continuar",
       "description_conditions": "Toca “aceptar y continuar” para aceptar las condiciones del  servicio.",
       "conditions_link": "Condiciones del servicio"
+    },
+    "phone_register": {
+      "title": "Verifica tu número",
+      "comment": "Ingresa tu número de celular, enviaremos un mensaje SMS para validarlo y continuar el registro",
+      "action_name": "Enviar"
     }
   },
   "tabs_available_favors": {

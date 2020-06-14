@@ -1,3 +1,25 @@
-<p>
-  phone-register works!
-</p>
+<ion-content [fullscreen]="true">
+    <div class="phone-register__header">
+        <p class="phone-register__header-title">
+            {{ 'app_title' | translate}}
+        </p>
+    </div>
+    <div class="phone-register__content">
+
+        <p class="phone-register__content-title">  {{ 'register.phone_register.title' | translate}}</p>
+        <p>  {{ 'register.phone_register.comment' | translate}}</p>
+
+        <ion-item>
+            <ion-label>+57</ion-label>
+            <ion-input type="number"
+                       placeholder="XXX XXX XXXX"
+                       [(ngModel)]="phoneNumber"></ion-input>
+        </ion-item>
+
+        <ion-button (click)="sendPhone()"
+                    color="tertiary"
+                    class="pp-app-button-l">
+            {{'register.phone_register.action_name' | translate}}
+        </ion-button>
+    </div>
+</ion-content>
