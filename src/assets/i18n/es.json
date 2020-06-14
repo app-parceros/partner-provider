@@ -1,0 +1,18 @@
+{
+  "register_intro": "Una opción segura y confiable de obtener ingresos extra ayudando a alguien más",
+  "tabs_available_favors": {
+    "title": "Disponibles"
+  },
+  "tabs_current_favor": {
+    "title": "En curso"
+  },
+  "tabs_home": {
+    "title": "Home"
+  },
+  "tabs_summary": {
+    "title": "Resumen"
+  },
+  "tabs_help": {
+    "title": "Ayuda"
+  }
+}

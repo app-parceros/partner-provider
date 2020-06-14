@@ -5,7 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {TabCurrentFavorComponent} from './tab-current-favor.component';
 import {RouterModule} from '@angular/router';
 import {TabCurrentFavorRoutingModule} from './tab-current-favor-routing.module';
-
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
     declarations: [TabCurrentFavorComponent],
@@ -14,7 +14,8 @@ import {TabCurrentFavorRoutingModule} from './tab-current-favor-routing.module';
         CommonModule,
         FormsModule,
         RouterModule.forChild([{path: '', component: TabCurrentFavorComponent}]),
-        TabCurrentFavorRoutingModule
+        TabCurrentFavorRoutingModule,
+        TranslateModule
     ]
 })
 export class TabCurrentFavorModule {

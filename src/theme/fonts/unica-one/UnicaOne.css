@@ -1,0 +1,45 @@
+/* UnicaOne Light & Light italic - 200 */
+
+@font-face {
+  font-family: 'UnicaOne';
+ /* src: url('UnicaOne-Light.eot'); /* IE9 Compat Modes */
+ /* src: url('UnicaOne-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+ /* url('UnicaOne-Light.woff') format('woff'), /* Modern Browsers */
+  /*src: url('UnicaOne-Light.ttf')  format('truetype'); /* Safari, Android, iOS */
+  /*url('UnicaOne-Light.svg#09be4bfe8975a657af6444a6f1d73848') format('svg');*/ /* Legacy iOS */
+
+  font-style:   normal;
+  font-weight:  200;
+}
+
+
+
+
+
+@font-face {
+  font-family: 'UnicaOne';
+  /*src: url('UnicaOne-Regular.eot'); /* IE9 Compat Modes */
+  /*src: url('UnicaOne-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  /*url('UnicaOne-Regular.woff') format('woff'), /* Modern Browsers */
+  src: url('UnicaOne-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+  /*url('UnicaOne-Regular.svg#dc56f0938c09c27a4156bb0f8f5176a2') format('svg'); /* Legacy iOS */
+
+  font-style:   normal;
+  font-weight:  400;
+}
+
+/* UnicaOne Bold & Bold italic - 700 */
+
+@font-face {
+  font-family: 'UnicaOne';
+  /*src: url('UnicaOne-Bold.eot'); /* IE9 Compat Modes */
+  /*src: url('UnicaOne-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  /*url('UnicaOne-Bold.woff') format('woff'), /* Modern Browsers */
+  /*src: url('UnicaOne-Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+  /*url('UnicaOne-Bold.svg#72800b665ba60a9a58674e2a6befde3a') format('svg'); /* Legacy iOS */
+
+  font-style:   normal;
+  font-weight:  700;
+}
+
+

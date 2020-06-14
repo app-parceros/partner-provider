@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TabHomeComponent} from './tab-home.component';
 import {TabHomeRoutingModule} from './tab-home-routing.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {TabHomeRoutingModule} from './tab-home-routing.module';
         CommonModule,
         FormsModule,
         RouterModule.forChild([{path: '', component: TabHomeComponent}]),
-        TabHomeRoutingModule
+        TabHomeRoutingModule,
+        TranslateModule
     ]
 })
 export class TabHomeModule {

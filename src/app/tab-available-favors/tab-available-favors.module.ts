@@ -7,7 +7,7 @@ import {TabAvailableFavorsRoutingModule} from './tab-available-favors-routing.mo
 import {RouterModule} from '@angular/router';
 import {FavorDetailComponent} from './favor-detail/favor-detail.component';
 import {CommonComponentsModule} from '../common-components/common-components.module';
-
+import {TranslateModule} from '@ngx-translate/core';
 @NgModule({
     declarations: [
         TabAvailableFavorsComponent,
@@ -20,7 +20,8 @@ import {CommonComponentsModule} from '../common-components/common-components.mod
         CommonComponentsModule,
         TabAvailableFavorsRoutingModule,
         RouterModule.forChild([{path: '', component: TabAvailableFavorsComponent}]),
-        TabAvailableFavorsRoutingModule
+        TabAvailableFavorsRoutingModule,
+        TranslateModule
     ]
 })
 export class TabAvailableFavorsModule {

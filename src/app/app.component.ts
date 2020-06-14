@@ -5,6 +5,7 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {Plugins, PushNotificationToken} from '@capacitor/core';
 import {RestApiPlatformService} from './rest-api/rest-api-platform.service';
 import {PushNotificationsService} from './push-notifications/push-notifications.service';
+import {TranslateService} from '@ngx-translate/core';
 
 const {Geolocation} = Plugins;
 
@@ -21,7 +22,8 @@ export class AppComponent {
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
         private platformService: RestApiPlatformService,
-        private pushNotificationsService: PushNotificationsService
+        private pushNotificationsService: PushNotificationsService,
+        private translateService: TranslateService
     ) {
         this.initializeApp()
             .then();
@@ -34,6 +36,7 @@ export class AppComponent {
 
         // this.checkDarkTheme();
         console.log('Initializing HomePage');
+        this.translateService.use('es');
         this.pushNotificationsService.initConfiguration();
         this.configureUpdatePosition();
     }

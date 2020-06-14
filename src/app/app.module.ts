@@ -9,7 +9,13 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {RestApiModule} from './rest-api/rest-api.module';
+import {HttpClient} from '@angular/common/http';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
@@ -17,8 +23,15 @@ import {RestApiModule} from './rest-api/rest-api.module';
         BrowserModule,
         IonicModule.forRoot(),
         AppRoutingModule,
-        RestApiModule.forRoot({apiUrl: 'https://partner-platform-dev.herokuapp.com'})
-        // RestApiModule.forRoot({apiUrl: 'http://localhost:3000'})
+        RestApiModule.forRoot({apiUrl: 'https://partner-platform-dev.herokuapp.com'}),
+        // RestApiModule.forRoot({apiUrl: 'http://localhost:3000'}),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        })
     ],
     providers: [
         StatusBar,
