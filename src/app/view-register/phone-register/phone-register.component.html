@@ -17,6 +17,7 @@
         </ion-item>
 
         <ion-button (click)="sendPhone()"
+                    [routerLink]="['../phone/', phoneNumber,'code']"
                     color="tertiary"
                     class="pp-app-button-l">
             {{'register.phone_register.action_name' | translate}}

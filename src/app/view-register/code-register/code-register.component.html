@@ -1,3 +1,25 @@
-<p>
-  code-register works!
-</p>
+<ion-content [fullscreen]="true">
+  <div class="code-register__header">
+    <p class="code-register__header-title">
+      {{ 'app_title' | translate}}
+    </p>
+  </div>
+  <div class="code-register__content">
+
+    <p class="code-register__content-title">  {{ 'register.code_register.title' | translate}}</p>
+    <p>  {{ 'register.code_register.comment' | translate}}</p>
+
+    <ion-item>
+      <ion-label>Codigo de seguridad</ion-label>
+      <ion-input type="password"
+                 placeholder="XXX XXX"
+                 [(ngModel)]="code"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="signIn()"
+                color="tertiary"
+                class="pp-app-button-l">
+      {{'register.code_register.action_name' | translate}}
+    </ion-button>
+  </div>
+</ion-content>

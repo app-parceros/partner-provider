@@ -8,22 +8,22 @@ import {TermsAndConditionsComponent} from './terms-and-conditions/terms-and-cond
 
 const routes: Routes = [
     {
+        path: 'terms-and-conditions',
+        component: TermsAndConditionsComponent
+    },
+    {
         path: 'phone',
         component: PhoneRegisterComponent,
 
     },
     {
-        path: 'code',
+        path: 'phone/:phoneNumber/code',
         component: CodeRegisterComponent
 
     },
     {
-        path: 'profile',
+        path: 'phone/:phoneNumber/profile',
         component: ProfileRegisterComponent
-    },
-    {
-        path: 'terms-and-conditions',
-        component: TermsAndConditionsComponent
     }
 ];
 

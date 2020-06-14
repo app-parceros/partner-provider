@@ -40,4 +40,9 @@ export class RestApiPlatformService {
         const url = `${this.platformConfig.apiUrl}/api/auth/phone`;
         return this.httpClient.post<IFavor>(url, {phone: `+57${phoneNumber}`}).toPromise();
     }
+
+    async signIn(credentials: { phone: string, hashCode: string }) {
+        const url = `${this.platformConfig.apiUrl}/api/auth/signin`;
+        return this.httpClient.post<IFavor>(url, credentials).toPromise();
+    }
 }
