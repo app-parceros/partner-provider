@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {RestApiPlatformService} from '../../rest-api/rest-api-platform.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {StorageService} from "../../common/utils/storage.service";
+import {relativeFrom} from "@angular/compiler-cli/src/ngtsc/file_system";
 
 @Component({
     selector: 'app-code-register',
@@ -16,6 +17,7 @@ export class CodeRegisterComponent implements OnInit {
 
     constructor(private platformService: RestApiPlatformService,
                 private storage: StorageService,
+                private router: Router,
                 private activatedRoute: ActivatedRoute) {
     }
 
@@ -34,6 +36,13 @@ export class CodeRegisterComponent implements OnInit {
         } catch (e) {
 
         }
-        await this.storage.setItem('authInfo', authInfo);
+        await this.storage.setItem('authInfo',
+            {
+                ...authInfo,
+                phoneNumber: `+57${this.phoneNumber}`,
+                code: this.code
+            }
+        );
+        await this.router.navigate(['']);
     }
 }

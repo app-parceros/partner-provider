@@ -16,7 +16,7 @@ export class RestApiPlatformService {
         private httpClient: HttpClient) {
     }
 
-    sendRegistrationToServer(token: PushNotificationToken) {
+    sendRegistrationToServer(token: any) {
         const url = `${this.platformConfig.apiUrl}/api/notification/token`;
         return this.httpClient.post<any>(url, token).toPromise();
     }

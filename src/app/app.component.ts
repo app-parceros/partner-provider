@@ -6,6 +6,7 @@ import {Plugins, PushNotificationToken} from '@capacitor/core';
 import {RestApiPlatformService} from './rest-api/rest-api-platform.service';
 import {PushNotificationsService} from './push-notifications/push-notifications.service';
 import {TranslateService} from '@ngx-translate/core';
+import {StorageService} from "./common/utils/storage.service";
 
 const {Geolocation} = Plugins;
 
@@ -23,6 +24,7 @@ export class AppComponent {
         private statusBar: StatusBar,
         private platformService: RestApiPlatformService,
         private pushNotificationsService: PushNotificationsService,
+        private storage: StorageService,
         private translateService: TranslateService
     ) {
         this.initializeApp()

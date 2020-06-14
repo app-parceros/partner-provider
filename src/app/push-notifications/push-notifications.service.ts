@@ -6,6 +6,7 @@ import {
     PushNotificationActionPerformed, Capacitor
 } from '@capacitor/core';
 import {RestApiPlatformService} from '../rest-api/rest-api-platform.service';
+import {StorageService} from '../common/utils/storage.service';
 
 const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
 
@@ -19,11 +20,14 @@ export class PushNotificationsService {
 
     private notificationToken: PushNotificationToken;
 
-    constructor(private platformService: RestApiPlatformService) {
+    constructor(private platformService: RestApiPlatformService,
+                private storage: StorageService) {
     }
 
-    public initConfiguration() {
-        if (isPushNotificationsAvailable) { // Register with Apple / Google to receive push via APNS/FCM
+    public async initConfiguration() {
+        const authInfo: any = await this.storage.getItem('authInfo');
+
+        if (authInfo && isPushNotificationsAvailable) { // Register with Apple / Google to receive push via APNS/FCM
             PushNotifications.register();
 
             // On succcess, we should be able to receive notifications
@@ -32,7 +36,11 @@ export class PushNotificationsService {
                     alert('Push registration success, token: ' + token.value);
                     console.log('Push registration success, token: ' + token.value);
                     this.notificationToken = token;
-                    await this.sendRegistrationToServer(token);
+                    await this.sendRegistrationToServer(
+                        {
+                            ...token,
+                            phoneNumber: authInfo.phoneNumber
+                        });
                 }
             );
 
@@ -71,7 +79,7 @@ export class PushNotificationsService {
 
     }
 
-    public async sendRegistrationToServer(token: PushNotificationToken) {
+    public async sendRegistrationToServer(token: any) {
         await this.platformService.sendRegistrationToServer(token);
     }
 }
