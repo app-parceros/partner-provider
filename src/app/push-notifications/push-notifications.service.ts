@@ -36,11 +36,7 @@ export class PushNotificationsService {
                     alert('Push registration success, token: ' + token.value);
                     console.log('Push registration success, token: ' + token.value);
                     this.notificationToken = token;
-                    await this.sendRegistrationToServer(
-                        {
-                            ...token,
-                            phoneNumber: authInfo.phoneNumber
-                        });
+                    await this.sendRegistrationToServer(token);
                 }
             );
 
