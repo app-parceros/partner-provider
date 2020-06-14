@@ -1,0 +1,31 @@
+@import '../../../theme/variables.scss';
+
+.terms-and-conditions {
+  &__header {
+    background: rgba(var( --ion-color-primary-rgb), 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+    padding: 23% var(--app-space-inset-m) var(--app-space-inset-m) var(--app-space-inset-m);
+    font-size: var(--app-font-size-body-small);
+  }
+
+  &__header-title {
+    font-size: var(--app-font-size-title);
+    font-family: var(--app-font-family-secondary);
+    color: var(--ion-color-tertiary);
+  }
+
+  &__content {
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: var(--app-space-inset-m) var(--app-space-inset-m) var(--app-space-inset-m) var(--app-space-inset-m);
+    font-size: var(--app-font-size-caption);
+
+    p {
+      text-align: center;
+    }
+  }
+}

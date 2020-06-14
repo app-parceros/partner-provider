@@ -1,3 +1,5 @@
+@import '../theme/variables.scss';
+
 body {
   margin: 0;
   font-family: 'Quicksand', Arial, Helvetica, sans-serif;
@@ -9,7 +11,39 @@ body {
   outline: none;
 }
 
+.pp-app {
+  p {
+    margin: 0;
+  }
 
-.p-title-default {
-  font-family: 'UnicaOne', Helvetica, Arial sans-serif;
+  .pp-app-text-link {
+    text-decoration: underline;
+    margin: var(--app-space-stack-m);
+    font-size:  var(--app-font-size-caption);
+    cursor: pointer;
+  }
+
+  .pp-app-button-l {
+    --padding-start: var(--app-space-inset-l);
+    --padding-end: var(--app-space-inset-l);
+    --padding-top: var(--app-space-inset-l);
+    --padding-bottom: var(--app-space-inset-l);
+    font-size: var(--app-font-size-body-small);
+  }
+
+  .pp-app-button-m {
+    --padding-start: var(--app-space-inset-m);
+    --padding-end: var(--app-space-inset-m);
+    --padding-top: var(--app-space-inset-m);
+    --padding-bottom: var(--app-space-inset-m);
+    font-size: var(--app-font-size-body-small);
+  }
+
+  .p-title-default {
+    font-family: 'UnicaOne', Helvetica, Arial sans-serif;
+  }
+
+  .button {
+    text-transform: none;
+  }
 }

@@ -1,5 +1,13 @@
 {
-  "register_intro": "Una opción segura y confiable de obtener ingresos extra ayudando a alguien más",
+  "app_title": "Parceros",
+  "app_intro_phrase": "Una opción segura y confiable de obtener ingresos extra ayudando a alguien más",
+  "register": {
+    "terms_and_conditions": {
+      "accept_and_continue": "Aceptar y continuar",
+      "description_conditions": "Toca “aceptar y continuar” para aceptar las condiciones del  servicio.",
+      "conditions_link": "Condiciones del servicio"
+    }
+  },
   "tabs_available_favors": {
     "title": "Disponibles"
   },

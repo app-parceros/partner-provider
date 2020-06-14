@@ -1,0 +1,17 @@
+<ion-content [fullscreen]="true">
+    <div class="terms-and-conditions__header">
+        <p class="terms-and-conditions__header-title">
+            {{ 'app_title' | translate}}
+        </p>
+        <p>  {{ 'app_intro_phrase' | translate}}</p>
+    </div>
+    <div class="terms-and-conditions__content">
+        <p>  {{ 'register.terms_and_conditions.description_conditions' | translate}}</p>
+        <p class="pp-app-text-link">  {{ 'register.terms_and_conditions.conditions_link' | translate}}</p>
+        <ion-button [routerLink]="'../phone'"
+                    color="tertiary"
+                    class="pp-app-button-l">
+            {{'register.terms_and_conditions.accept_and_continue' | translate}}
+        </ion-button>
+    </div>
+</ion-content>

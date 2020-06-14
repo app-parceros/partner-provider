@@ -12,10 +12,12 @@ import {RestApiModule} from './rest-api/rest-api.module';
 import {HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {IonicStorageModule} from '@ionic/storage';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
@@ -31,7 +33,8 @@ export function createTranslateLoader(http: HttpClient) {
                 useFactory: (createTranslateLoader),
                 deps: [HttpClient]
             }
-        })
+        }),
+        IonicStorageModule.forRoot()
     ],
     providers: [
         StatusBar,
