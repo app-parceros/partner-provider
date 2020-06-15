@@ -1,6 +1,10 @@
 {
   "app_title": "Soy Parcero",
   "app_intro_phrase": "Una opción segura y confiable de obtener ingresos extra ayudando a alguien más.",
+  "action": {
+    "ok": "Ok",
+    "cancel": "Cancelar"
+  },
   "register": {
     "terms_and_conditions": {
       "accept_and_continue": "Aceptar y continuar",
@@ -20,11 +24,30 @@
     "profile_register": {
       "title": "Algunos datos mas",
       "comment": "Requerimos un poco más de información sobre ti",
+      "comment_almost_done": "Un par de datos mas, ya casi terminamos!",
+      "comment_done": "Genial! Has completado el registro como parcero, realizaremos el estudio y te notificaremos el resultado en el transcurso de 24 horas",
       "action_name": "Continuar",
-      "name_label": "Nombres",
-      "last_name_label": "Apellidos",
-      "name_placeholder": "ej. Pedro Alejandro",
-      "last_name_placeholder": "ej. Lopez Ruiz"
+      "action_done": "Entendido",
+      "name": {
+        "label": "Nombres",
+        "placeholder": "ej. Pedro Alejandro"
+      },
+      "last_name": {
+        "label": "Apellidos",
+        "placeholder": "ej. Lopez Ruiz"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "ej. pedro.alejandro@gmail.com"
+      },
+      "identification_type": {
+        "label": "Tipo de identificación",
+        "placeholder": "ej. CC"
+      },
+      "identification": {
+        "label": "Número de identificación",
+        "placeholder": "ej. 105826937"
+      }
     }
   },
   "tabs_available_favors": {

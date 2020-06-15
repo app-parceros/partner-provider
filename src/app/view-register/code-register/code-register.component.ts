@@ -26,7 +26,7 @@ export class CodeRegisterComponent implements OnInit {
 
     async signIn() {
         let authInfo;
-        const credentials = {
+       const credentials = {
             phone: `+57${this.phoneNumber}`,
             hashCode: this.code
         };
@@ -42,6 +42,6 @@ export class CodeRegisterComponent implements OnInit {
                 code: this.code
             }
         );
-        await this.router.navigate(['']);
+        await this.router.navigate(['..', 'profile'], {relativeTo: this.activatedRoute});
     }
 }

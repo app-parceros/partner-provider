@@ -8,7 +8,7 @@ export class StorageService {
     constructor(private storage: Storage) {
     }
 
-    async setItem(key: string, item: string) {
+    async setItem(key: string, item: any) {
         await this.storage.set(key, JSON.stringify(item));
     }
 

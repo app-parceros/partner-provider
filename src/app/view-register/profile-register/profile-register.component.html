@@ -1,33 +1,96 @@
 <ion-content [fullscreen]="true">
     <div class="profile-register__header">
         <ion-icon name="arrow-back"
-                  [routerLink]="['../../../phone']">
+                  (click)="onBack()"
+                  [routerLink]="getBackRouterLink()">
         </ion-icon>
         <p class="profile-register__header-title">
             {{ 'app_title' | translate}}
         </p>
     </div>
     <div class="profile-register__content pp-app-content">
+        <!-- ************** Comments ********************* -->
+        <ng-template [ngIf]="stepNumber < totalSteps-1">
+            <p class="profile-register__content-title">  {{ 'register.profile_register.title' | translate}}</p>
+            <p>  {{ 'register.profile_register.comment' | translate}}</p>
+        </ng-template>
+        <ng-template [ngIf]="stepNumber == totalSteps-1">
+            <p class="profile-register__content-title">  {{ 'register.profile_register.title' | translate}}</p>
+            <p>  {{ 'register.profile_register.comment_almost_done' | translate}}</p>
+        </ng-template>
 
-        <p class="profile-register__content-title">  {{ 'register.profile_register.title' | translate}}</p>
-        <p>  {{ 'register.profile_register.comment' | translate}}</p>
+        <!-- ************** Steps ********************* -->
 
-        <ion-item>
-            <ion-label position="stacked">{{'register.profile_register.name_label' | translate}}</ion-label>
-            <ion-input [placeholder]="'register.profile_register.name_placeholder' | translate"
-                       [(ngModel)]="name"></ion-input>
-        </ion-item>
+        <ng-template [ngIf]="stepNumber==0">
+            <ion-item>
+                <ion-label position="stacked">{{'register.profile_register.name.label' | translate}}</ion-label>
+                <ion-input [placeholder]="'register.profile_register.name.placeholder' | translate"
+                           [(ngModel)]="userProfile.name"></ion-input>
+            </ion-item>
 
-        <ion-item>
-            <ion-label position="stacked">{{'register.profile_register.last_name_label' | translate}}</ion-label>
-            <ion-input [placeholder]="'register.profile_register.last_name_placeholder' | translate"
-                       [(ngModel)]="lastName"></ion-input>
-        </ion-item>
+            <ion-item>
+                <ion-label position="stacked">{{'register.profile_register.last_name.label' | translate}}</ion-label>
+                <ion-input [placeholder]="'register.profile_register.last_name.placeholder' | translate"
+                           [(ngModel)]="userProfile.lastName"></ion-input>
+            </ion-item>
+        </ng-template>
 
-        <ion-button [routerLink]="['../phone/', phoneNumber,'profile']"
-                    color="tertiary"
-                    class="pp-app-button-l">
-            {{'register.profile_register.action_name' | translate}}
-        </ion-button>
+        <ng-template [ngIf]="stepNumber==1">
+            <ion-item>
+                <ion-label
+                        position="stacked">{{'register.profile_register.email.label' | translate}}</ion-label>
+                <ion-input [placeholder]="'register.profile_register.email.label' | translate"
+                           [(ngModel)]="userProfile.email">
+                </ion-input>
+            </ion-item>
+        </ng-template>
+
+        <ng-template [ngIf]="stepNumber==2">
+            <ion-item>
+                <ion-label
+                        position="stacked">{{'register.profile_register.identification_type.label' | translate}}</ion-label>
+                <ion-select [(ngModel)]="userProfile.identificationType"
+                            okText="{{'action.ok' | translate}}"
+                            cancelText="{{'action.cancel' | translate}}">
+                    <ion-select-option value="cc">CC</ion-select-option>
+                    <ion-select-option value="xxx">XXX</ion-select-option>
+                    <ion-select-option value="yyy">YYY</ion-select-option>
+                    <ion-select-option value="ppp">PPP</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label
+                        position="stacked">{{'register.profile_register.identification.label' | translate}}</ion-label>
+                <ion-input [placeholder]="'register.profile_register.identification.label' | translate"
+                           [(ngModel)]="userProfile.identification">
+                </ion-input>
+            </ion-item>
+        </ng-template>
+
+        <ng-template [ngIf]="stepNumber==3">
+            <p>{{'register.profile_register.comment_done' | translate}}</p>
+        </ng-template>
+
+        <!-- ************** Buttons ********************* -->
+        <ng-template [ngIf]="stepNumber < totalSteps">
+            <ion-button [routerLink]="getNexRouterLink()"
+                        (click)="onNext()"
+                        color="tertiary"
+                        class="pp-app-button-l">
+                {{'register.profile_register.action_name' | translate}}
+            </ion-button>
+        </ng-template>
+
+
+        <ng-template [ngIf]="stepNumber >= totalSteps">
+            <ion-button [routerLink]="getNexRouterLink()"
+                        (click)="onNext()"
+                        color="tertiary"
+                        class="pp-app-button-l">
+                {{'register.profile_register.action_done' | translate}}
+            </ion-button>
+        </ng-template>
+
+
     </div>
 </ion-content>

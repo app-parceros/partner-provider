@@ -39,7 +39,7 @@ export class AppComponent {
         // this.checkDarkTheme();
         console.log('Initializing HomePage');
         this.translateService.use('es');
-        this.pushNotificationsService.initConfiguration();
+        // this.pushNotificationsService.initConfiguration().then();
         this.configureUpdatePosition();
     }
 

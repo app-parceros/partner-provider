@@ -23,8 +23,19 @@ const routes: Routes = [
     },
     {
         path: 'phone/:phoneNumber/profile',
-        component: ProfileRegisterComponent
+        children: [
+            {
+                path: 'step/:stepNumber',
+                component: ProfileRegisterComponent
+            },
+            {
+                path: '',
+                redirectTo: 'step/0',
+                pathMatch: 'full'
+            }
+        ]
     }
+
 ];
 
 @NgModule({

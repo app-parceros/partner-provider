@@ -5,6 +5,7 @@ import {PushNotificationToken} from '@capacitor/core';
 import {ResultSet} from '../common/models/ResultSet';
 import {IFavor} from '../common/models/Favor';
 import {IPosition} from '../common/models/Location';
+import {IUser} from "../common/models/User";
 
 @Injectable({
     providedIn: 'root'
@@ -26,6 +27,11 @@ export class RestApiPlatformService {
         return this.httpClient.post<IPosition>(url, position).toPromise();
     }
 
+    async updateUserProfile(userId: Guid, user: Partial<IUser>) {
+        const url = `${this.platformConfig.apiUrl}/api/user/${user.id}`;
+        return this.httpClient.put<IFavor>(url, user).toPromise();
+    }
+
     getFavors(position: any): Promise<ResultSet<IFavor>> {
         const url = `${this.platformConfig.apiUrl}/api/favor?lat=${position.lat}&lng=${position.lng}&radius=1380`;
         return this.httpClient.get<any>(url).toPromise();
@@ -45,4 +51,6 @@ export class RestApiPlatformService {
         const url = `${this.platformConfig.apiUrl}/api/auth/signin`;
         return this.httpClient.post<IFavor>(url, credentials).toPromise();
     }
+
+
 }
