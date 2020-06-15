@@ -20,6 +20,7 @@
         </ion-item>
 
         <ion-button (click)="signIn()"
+                    [routerLink]="['../phone/', phoneNumber,'profile']"
                     color="tertiary"
                     class="pp-app-button-l">
             {{'register.code_register.action_name' | translate}}

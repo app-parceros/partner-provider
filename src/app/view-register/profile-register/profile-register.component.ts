@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-profile-register',
-  templateUrl: './profile-register.component.html',
-  styleUrls: ['./profile-register.component.scss'],
+    selector: 'app-profile-register',
+    templateUrl: './profile-register.component.html',
+    styleUrls: ['./profile-register.component.scss'],
 })
 export class ProfileRegisterComponent implements OnInit {
+    public phoneNumber;
+    public name;
+    public lastName;
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit() {}
+    ngOnInit() {
+    }
 
 }

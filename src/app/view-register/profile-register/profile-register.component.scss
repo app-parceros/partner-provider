@@ -1,0 +1,76 @@
+@import '../../../theme/variables.scss';
+
+.profile-register {
+  &__header {
+    background: rgba(var(--ion-color-primary-rgb), 0.1);
+    display: flex;
+    padding: var(--app-space-inset-s) var(--app-space-inset-m);
+    font-size: var(--app-font-size-body);
+    align-items: center;
+
+    ion-icon {
+      color: rgba(var(--ion-color-primary-rgb), 0.5);;
+      padding: var(--app-space-inset-xs) var(--app-space-inset-m) var(--app-space-inset-xs) 0;
+      cursor: pointer;
+      font-size: 28px;
+      z-index: 1;
+    }
+
+  }
+
+  &__header-title {
+    font-size: var(--app-font-size-subheading);
+    font-family: var(--app-font-family-secondary);
+    color: var(--ion-color-tertiary);
+    font-weight: 800;
+  }
+
+  &__content {
+    height: calc(100% - 52px);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: var(--app-space-inset-m) var(--app-space-inset-m) 140px var(--app-space-inset-m);
+    font-size: var(--app-font-size-subheading);
+
+    p {
+      text-align: center;
+    }
+
+    &::before {
+      content: "";
+      background-image: url('../../../assets/imgs/town.png');
+      background-repeat: no-repeat no-repeat;
+      background-size: 100% auto;
+      background-position: center bottom -13px;
+      height: auto;
+      width: 100%;
+      opacity: 0.2;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 0;
+    }
+  }
+
+  &__content-title {
+    font-weight: bold;
+  }
+
+  &__value {
+    text-align: center;
+  }
+}
+
+
+@media screen and (min-width: var(--app-break-xs)) {
+  .code-register {
+    &__content {
+      &::before {
+        background-position: center bottom - 56px;
+      }
+    }
+  }
+}

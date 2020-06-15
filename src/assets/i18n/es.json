@@ -1,6 +1,6 @@
 {
-  "app_title": "Parceros",
-  "app_intro_phrase": "Una opción segura y confiable de obtener ingresos extra ayudando a alguien más",
+  "app_title": "Soy Parcero",
+  "app_intro_phrase": "Una opción segura y confiable de obtener ingresos extra ayudando a alguien más.",
   "register": {
     "terms_and_conditions": {
       "accept_and_continue": "Aceptar y continuar",
@@ -16,6 +16,15 @@
       "title": "Verifica tu número",
       "comment": "Ingresa el número de verificación que enviamos a tu celular",
       "action_name": "Enviar"
+    },
+    "profile_register": {
+      "title": "Algunos datos mas",
+      "comment": "Requerimos un poco más de información sobre ti",
+      "action_name": "Continuar",
+      "name_label": "Nombres",
+      "last_name_label": "Apellidos",
+      "name_placeholder": "ej. Pedro Alejandro",
+      "last_name_placeholder": "ej. Lopez Ruiz"
     }
   },
   "tabs_available_favors": {

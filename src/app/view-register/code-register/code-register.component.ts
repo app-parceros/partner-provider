@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RestApiPlatformService} from '../../rest-api/rest-api-platform.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {StorageService} from "../../common/utils/storage.service";
-import {relativeFrom} from "@angular/compiler-cli/src/ngtsc/file_system";
+import {StorageService} from '../../common/utils/storage.service';
 
 @Component({
     selector: 'app-code-register',

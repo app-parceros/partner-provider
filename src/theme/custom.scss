@@ -60,4 +60,9 @@ body {
     --highlight-background: var(--ion-color-tertiary-tint);
   }
 
+  .label-stacked {
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+    font-size: var(--app-font-size-body);
+  }
+
 }

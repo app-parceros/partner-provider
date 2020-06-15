@@ -1,3 +1,33 @@
-<p>
-  profile-register works!
-</p>
+<ion-content [fullscreen]="true">
+    <div class="profile-register__header">
+        <ion-icon name="arrow-back"
+                  [routerLink]="['../../../phone']">
+        </ion-icon>
+        <p class="profile-register__header-title">
+            {{ 'app_title' | translate}}
+        </p>
+    </div>
+    <div class="profile-register__content pp-app-content">
+
+        <p class="profile-register__content-title">  {{ 'register.profile_register.title' | translate}}</p>
+        <p>  {{ 'register.profile_register.comment' | translate}}</p>
+
+        <ion-item>
+            <ion-label position="stacked">{{'register.profile_register.name_label' | translate}}</ion-label>
+            <ion-input [placeholder]="'register.profile_register.name_placeholder' | translate"
+                       [(ngModel)]="name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">{{'register.profile_register.last_name_label' | translate}}</ion-label>
+            <ion-input [placeholder]="'register.profile_register.last_name_placeholder' | translate"
+                       [(ngModel)]="lastName"></ion-input>
+        </ion-item>
+
+        <ion-button [routerLink]="['../phone/', phoneNumber,'profile']"
+                    color="tertiary"
+                    class="pp-app-button-l">
+            {{'register.profile_register.action_name' | translate}}
+        </ion-button>
+    </div>
+</ion-content>
