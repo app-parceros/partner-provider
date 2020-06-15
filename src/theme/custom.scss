@@ -21,6 +21,13 @@ body {
     margin: var(--app-space-stack-m);
     font-size: var(--app-font-size-caption);
     cursor: pointer;
+    z-index: 1;
+    transition: all ease-in-out 0.5s;
+
+    &:hover {
+      color: var(--ion-color-tertiary-shade);
+      font-weight: bold;
+    }
   }
 
   .pp-app-button-l {
@@ -50,7 +57,7 @@ body {
 
   .item-input {
     font-size: var(--app-font-size-subheading);
-    --highlight-background:var(--ion-color-tertiary-tint);
+    --highlight-background: var(--ion-color-tertiary-tint);
   }
 
 }

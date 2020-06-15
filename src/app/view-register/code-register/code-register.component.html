@@ -1,25 +1,28 @@
 <ion-content [fullscreen]="true">
-  <div class="code-register__header">
-    <p class="code-register__header-title">
-      {{ 'app_title' | translate}}
-    </p>
-  </div>
-  <div class="code-register__content pp-app-content">
+    <div class="code-register__header">
+        <ion-icon name="arrow-back"
+                  [routerLink]="['../../../phone']">
+        </ion-icon>
+        <p class="code-register__header-title">
+            {{ 'app_title' | translate}}
+        </p>
+    </div>
+    <div class="code-register__content pp-app-content">
 
-    <p class="code-register__content-title">  {{ 'register.code_register.title' | translate}}</p>
-    <p>  {{ 'register.code_register.comment' | translate}}</p>
+        <p class="code-register__content-title">  {{ 'register.code_register.title' | translate}}</p>
+        <p>  {{ 'register.code_register.comment' | translate}}</p>
 
-    <ion-item>
-      <ion-input type="password"
-                 class="code-register__value"
-                 placeholder="XXX XXX"
-                 [(ngModel)]="code"></ion-input>
-    </ion-item>
+        <ion-item>
+            <ion-input type="password"
+                       class="code-register__value"
+                       placeholder="XXX XXX"
+                       [(ngModel)]="code"></ion-input>
+        </ion-item>
 
-    <ion-button (click)="signIn()"
-                color="tertiary"
-                class="pp-app-button-l">
-      {{'register.code_register.action_name' | translate}}
-    </ion-button>
-  </div>
+        <ion-button (click)="signIn()"
+                    color="tertiary"
+                    class="pp-app-button-l">
+            {{'register.code_register.action_name' | translate}}
+        </ion-button>
+    </div>
 </ion-content>
