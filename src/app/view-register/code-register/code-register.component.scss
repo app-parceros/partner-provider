@@ -20,11 +20,28 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    padding: var(--app-space-inset-m) var(--app-space-inset-m) var(--app-space-inset-m) var(--app-space-inset-m);
+    padding: var(--app-space-inset-m) var(--app-space-inset-m) 140px var(--app-space-inset-m);
     font-size: var(--app-font-size-subheading);
 
     p {
       text-align: center;
+    }
+
+    &::before {
+      content: "";
+      background-image: url('../../../assets/imgs/town.png');
+      background-repeat: no-repeat no-repeat;
+      background-size: 100% auto;
+      background-position: center bottom -13px;
+      height: auto;
+      width: 100%;
+      opacity: 0.2;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 0;
     }
   }
 
@@ -34,5 +51,16 @@
 
   &__value {
     text-align: center;
+  }
+}
+
+
+@media screen and (min-width: var(--app-break-xs)) {
+  .code-register {
+    &__content {
+      &::before {
+        background-position: center bottom - 56px;
+      }
+    }
   }
 }

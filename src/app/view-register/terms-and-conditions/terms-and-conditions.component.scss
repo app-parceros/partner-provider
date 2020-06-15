@@ -30,10 +30,27 @@
     justify-content: center;
     flex-direction: column;
     padding: var(--app-space-inset-m) var(--app-space-inset-m) var(--app-space-inset-m) var(--app-space-inset-m);
-    font-size: var( --app-font-size-body-small);
+    font-size: var(--app-font-size-body-small);
 
     p {
       text-align: center;
+    }
+
+    &::before {
+      content: "";
+      background-image: url('../../../assets/imgs/town.png');
+      background-repeat: no-repeat no-repeat;
+      background-size: 100% auto;
+      background-position: center bottom -13px;
+      height: auto;
+      width: 100%;
+      opacity: 0.2;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 0;
     }
   }
 }
