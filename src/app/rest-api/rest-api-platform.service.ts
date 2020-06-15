@@ -16,8 +16,8 @@ export class RestApiPlatformService {
         private httpClient: HttpClient) {
     }
 
-    sendRegistrationToServer(token: any) {
-        const url = `${this.platformConfig.apiUrl}/api/notification/token`;
+    registerNotificationToken(userId: Guid, token: any) {
+        const url = `${this.platformConfig.apiUrl}/api/user/${userId}/token`;
         return this.httpClient.post<any>(url, token).toPromise();
     }
 

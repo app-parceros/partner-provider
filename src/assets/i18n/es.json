@@ -11,6 +11,11 @@
       "title": "Verifica tu número",
       "comment": "Ingresa tu número de celular, enviaremos un mensaje SMS para validarlo y continuar el registro",
       "action_name": "Enviar"
+    },
+    "code_register": {
+      "title": "Verifica tu número",
+      "comment": "Ingresa el número de verificación que enviamos a tu celular",
+      "action_name": "Enviar"
     }
   },
   "tabs_available_favors": {

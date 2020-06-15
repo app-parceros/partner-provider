@@ -26,7 +26,7 @@ export function createTranslateLoader(http: HttpClient) {
         IonicModule.forRoot(),
         AppRoutingModule,
         RestApiModule.forRoot({apiUrl: 'https://partner-platform-dev.herokuapp.com'}),
-        // RestApiModule.forRoot({apiUrl: 'http://localhost:3000'}),
+        // RestApiModule.forRoot({apiUrl: 'http://localhost:4200'}),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

@@ -24,11 +24,9 @@ export class FavorDetailComponent implements OnInit {
             name: 'first favor',
             description: 'favor description',
             reward: 1500,
-            location: {
-                position: {
-                    lat: center.lat(),
-                    lng: center.lng()
-                }
+            position: {
+                lat: center.lat(),
+                lng: center.lng()
             }
         };
         await this.platformService.createFavor(favor);

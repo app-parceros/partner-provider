@@ -36,7 +36,7 @@ export class PushNotificationsService {
                     alert('Push registration success, token: ' + token.value);
                     console.log('Push registration success, token: ' + token.value);
                     this.notificationToken = token;
-                    await this.sendRegistrationToServer(token);
+                    await this.platformService.registerNotificationToken(authInfo.userId, token);
                 }
             );
 
@@ -73,9 +73,5 @@ export class PushNotificationsService {
             );
         }
 
-    }
-
-    public async sendRegistrationToServer(token: any) {
-        await this.platformService.sendRegistrationToServer(token);
     }
 }

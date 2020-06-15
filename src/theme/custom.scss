@@ -3,7 +3,7 @@
 body {
   margin: 0;
   font-family: 'Quicksand', Arial, Helvetica, sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.9rem;
 }
 
 * {
@@ -19,7 +19,7 @@ body {
   .pp-app-text-link {
     text-decoration: underline;
     margin: var(--app-space-stack-m);
-    font-size:  var(--app-font-size-caption);
+    font-size: var(--app-font-size-caption);
     cursor: pointer;
   }
 
@@ -29,6 +29,7 @@ body {
     --padding-top: var(--app-space-inset-l);
     --padding-bottom: var(--app-space-inset-l);
     font-size: var(--app-font-size-body-small);
+    height: 4.8rem;
   }
 
   .pp-app-button-m {
@@ -46,4 +47,10 @@ body {
   .button {
     text-transform: none;
   }
+
+  .item-input {
+    font-size: var(--app-font-size-subheading);
+    --highlight-background:var(--ion-color-tertiary-tint);
+  }
+
 }

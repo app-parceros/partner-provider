@@ -1,0 +1,38 @@
+@import '../../../theme/variables.scss';
+
+.code-register {
+  &__header {
+    background: rgba(var(--ion-color-primary-rgb), 0.1);
+    display: flex;
+    padding: var(--app-space-inset-s) var(--app-space-inset-m);
+    font-size: var(--app-font-size-body-small);
+  }
+
+  &__header-title {
+    font-size: var(--app-font-size-body);
+    font-family: var(--app-font-family-secondary);
+    color: var(--ion-color-tertiary);
+    font-weight: 800;
+  }
+
+  &__content {
+    height: calc(100% - 52px);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: var(--app-space-inset-m) var(--app-space-inset-m) var(--app-space-inset-m) var(--app-space-inset-m);
+    font-size: var(--app-font-size-subheading);
+
+    p {
+      text-align: center;
+    }
+  }
+
+  &__content-title {
+    font-weight: bold;
+  }
+
+  &__value {
+    text-align: center;
+  }
+}

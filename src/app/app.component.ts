@@ -56,12 +56,12 @@ export class AppComponent {
         Geolocation.watchPosition({
             enableHighAccuracy: false,
             maximumAge: 1800000,
-            timeout: 20000
+            timeout: 1800000
         }, async position => {
-            await self.platformService.updateUserPosition('ba56e391-2139-437a-b277-7f20d713142a', {
+            /*await self.platformService.updateUserPosition('ba56e391-2139-437a-b277-7f20d713142a', {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
-            });
+            });*/
         });
     }
 }
