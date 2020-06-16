@@ -7,7 +7,7 @@ export interface IFavor {
     id?: Guid;
     name: string;
     description: string;
-    position: IPosition;
+    position: ILocation;
     reward: number;
     creationDate?: string;
     steps?: IFavorStep[];

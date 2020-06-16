@@ -18,17 +18,22 @@ export class FavorDetailComponent implements OnInit {
     }
 
     async addMarker() {
-        const center = this.mapComponent.map.getCenter();
-        this.mapComponent.addMarker(center.lat(), center.lng());
-        const favor: IFavor = {
-            name: 'first favor',
-            description: 'favor description',
-            reward: 1500,
-            position: {
-                lat: center.lat(),
-                lng: center.lng()
-            }
-        };
-        await this.platformService.createFavor(favor);
+        await this.includeFavorMarkers();
+
+        console.log("before calculate route")
+        //this.mapComponent.calculateRoute();
+    }
+
+    async includeFavorMarkers() {
+        console.log("includeFavorMarkers");
+        const favorDetail = await this.platformService.getFavorDetail('favor');
+        for (const step of favorDetail.steps) {
+            const lng = step.position.lng;
+            const lat = step.position.lat;
+            console.log(step);
+            this.mapComponent.addMarker(lat, lng);
+
+        }
+
     }
 }

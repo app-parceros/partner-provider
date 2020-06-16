@@ -1,13 +1,13 @@
 // export namespace Common {
 import {Guid} from './Guid';
-import {ILocation} from './Location';
+import {ILocation, IPosition} from './Location';
 
 export interface IFavorStep {
-    id: Guid;
+    id?: Guid;
     name?: string;
     description?: string;
-    location: ILocation;
-    attachments: string[];
+    position: IPosition;
+    attachments?: string[];
 }
 
 // }

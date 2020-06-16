@@ -2,6 +2,7 @@
 import {Component, ElementRef, Inject, Input, OnInit, Renderer2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {Plugins} from '@capacitor/core';
+import {RestApiPlatformService} from '../../rest-api/rest-api-platform.service';
 
 const {Geolocation, Network} = Plugins;
 
@@ -19,11 +20,24 @@ export class GoogleMapsComponent implements OnInit {
     private mapsLoaded = false;
     private networkHandler = null;
 
-    constructor(private renderer: Renderer2, private element: ElementRef, @Inject(DOCUMENT) private document) {
+    //directionsService: any = null;
+    //directionsDisplay: any = null;
+    bounds: any = null;
+    myLatLng: any;
+
+    public waypoints: any[] = [];
+
+    constructor(private renderer: Renderer2, private element: ElementRef, @Inject(DOCUMENT) private document, private readonly  platformService: RestApiPlatformService) {
+
+        /*this.directionsService = new google.maps.DirectionsService();
+        this.directionsDisplay = new google.maps.DirectionsRenderer();
+        this.bounds = new google.maps.LatLngBounds();
+*/
 
     }
 
     ngOnInit() {
+
 
         this.init().then((res) => {
             console.log('Google Maps ready.');
@@ -207,6 +221,46 @@ export class GoogleMapsComponent implements OnInit {
         });
 
         this.markers.push(marker);
+
+    }
+
+    async calculateRoute() {
+        var directionsService = new google.maps.DirectionsService();
+        var directionsDisplay = new google.maps.DirectionsRenderer();
+        const favorDetail = await this.platformService.getFavorDetail('favor');
+
+
+        for (const step of favorDetail.steps) {
+            const lng = step.position.lng;
+            const lat = step.position.lat;
+            console.log(step);
+            this.waypoints.push({
+                    position: lat,lng
+                });
+
+
+
+        }
+        console.log("vamos bn bn ");
+
+
+       // this.map.fitBounds(this.bounds);
+
+        directionsService.route({
+            origin: new google.maps.LatLng(4.725758098247824, -74.03076787201972),
+            destination: new google.maps.LatLng(4.735758098247824, -74.04076787201972),
+           // waypoints: this.waypoints,
+            optimizeWaypoints: true,
+            travelMode: google.maps.TravelMode.DRIVING,
+            avoidTolls: true
+        }, (response, status)=> {
+            if(status === google.maps.DirectionsStatus.OK) {
+                console.log(response);
+               // directionsDisplay.setDirections(response);
+            }else{
+                alert('Could not display directions due to: ' + status);
+            }
+        });
 
     }
 
