@@ -51,6 +51,23 @@ body {
     font-family: 'UnicaOne', Helvetica, Arial sans-serif;
   }
 
+  .p-title-parceros {
+    font-family: 'UnicaOne', Helvetica, Arial sans-serif;
+    color:  var(--ion-color-tertiary-tint);
+    font-size: var(--app-font-size-subheading);
+    width: 100%;
+    height: 100%;
+    text-align: left;
+  }
+
+  .tap-bar-parceros{
+    background: var(--ion-color-light-shade);
+  }
+
+  .icon-menu {
+    background: #2dd36f;
+  }
+
   .button {
     text-transform: none;
   }
