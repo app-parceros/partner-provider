@@ -2,8 +2,9 @@
 import {Component, ElementRef, Inject, Input, OnInit, Renderer2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {Plugins} from '@capacitor/core';
+import {GeoLocationService} from '../../common/geo-location/geo-location.service';
 
-const {Geolocation, Network} = Plugins;
+const {Network} = Plugins;
 
 @Component({
     selector: 'app-google-maps',
@@ -19,127 +20,68 @@ export class GoogleMapsComponent implements OnInit {
     private mapsLoaded = false;
     private networkHandler = null;
 
-    constructor(private renderer: Renderer2, private element: ElementRef, @Inject(DOCUMENT) private document) {
+    constructor(private renderer: Renderer2,
+                private element: ElementRef,
+                @Inject(DOCUMENT) private document,
+                private geoLocationService: GeoLocationService) {
 
     }
 
-    ngOnInit() {
-
-        this.init().then((res) => {
-            console.log('Google Maps ready.');
-
-            const icon = {
-                url: './assets/icon/favicon.png',
-                scaledSize: new google.maps.Size(50, 50)
-            };
-
-            const latLng = new google.maps.LatLng(4.725758098247824, -74.03076787201982);
-            const marker = new google.maps.Marker({
-                map: this.map,
-                animation: google.maps.Animation.DROP,
-                position: latLng,
-                icon,
-                label: 'Doña jimena'
-            });
-
-            this.markers.push(marker);
-
-
-        }, (err) => {
-            console.log(err);
+    async ngOnInit() {
+        await this.init();
+        console.log('Google Maps ready.');
+        const icon = {
+            url: './assets/icon/favicon.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        const latLng = new google.maps.LatLng(4.725758098247824, -74.03076787201982);
+        const marker = new google.maps.Marker({
+            map: this.map,
+            animation: google.maps.Animation.DROP,
+            position: latLng,
+            icon,
+            label: 'Doña jimena'
         });
-
+        this.markers.push(marker);
     }
 
-    private init(): Promise<any> {
-
-        return new Promise((resolve, reject) => {
-
-            this.loadSDK().then((res) => {
-
-                this.initMap().then((res2: any) => {
-                    resolve(true);
-                }, (err) => {
-                    reject(err);
-                });
-
-            }, (err) => {
-
-                reject(err);
-
-            });
-
-        });
-
+    private async init(): Promise<any> {
+        await this.loadSDK();
+        await this.initMap();
     }
 
-    private loadSDK(): Promise<any> {
-
+    private async loadSDK(): Promise<any> {
         console.log('Loading Google Maps SDK');
-
-        return new Promise((resolve, reject) => {
-
-            if (!this.mapsLoaded) {
-
-                Network.getStatus().then((status) => {
-
-                    if (status.connected) {
-
-                        this.injectSDK().then((res) => {
-                            resolve(true);
-                        }, (err) => {
-                            reject(err);
+        if (!this.mapsLoaded) {
+            let status;
+            try {
+                status = await Network.getStatus();
+                if (status.connected) {
+                    await this.injectSDK();
+                } else {
+                    if (this.networkHandler == null) {
+                        this.networkHandler = Network.addListener('networkStatusChange', async (status2) => {
+                            if (status2.connected) {
+                                this.networkHandler.remove();
+                                await this.init();
+                                console.log('Google Maps ready.');
+                            }
                         });
-
-                    } else {
-
-                        if (this.networkHandler == null) {
-
-                            this.networkHandler = Network.addListener('networkStatusChange', (status2) => {
-
-                                if (status2.connected) {
-
-                                    this.networkHandler.remove();
-
-                                    this.init().then((res) => {
-                                        console.log('Google Maps ready.');
-                                    }, (err) => {
-                                        console.log(err);
-                                    });
-
-                                }
-
-                            });
-
-                        }
-
-                        reject('Not online');
                     }
-
-                }, (err) => {
-
-                    // NOTE: navigator.onLine temporarily required until Network plugin has web implementation
-                    if (navigator.onLine) {
-
-                        this.injectSDK().then((res) => {
-                            resolve(true);
-                        }, (err2) => {
-                            reject(err2);
-                        });
-
-                    } else {
-                        reject('Not online');
-                    }
-
-                });
-
-            } else {
-                reject('SDK already loaded');
+                    console.log('Not online');
+                }
+            } catch (e) {
+                // NOTE: navigator.onLine temporarily required until Network plugin has web implementation
+                if (navigator.onLine) {
+                    await this.injectSDK();
+                } else {
+                    console.warn('Not online');
+                }
             }
 
-        });
-
-
+        } else {
+            console.warn('SDK already loaded');
+        }
     }
 
     private injectSDK(): Promise<any> {
@@ -156,42 +98,15 @@ export class GoogleMapsComponent implements OnInit {
     }
 
 
-    /**
-     * try{
-     * const result = await Geolocation.getCurrentPosition();
-     *  other sentence
-     * }
-     * catch(){
-     * console.log();
-     * }
-     **/
+    private async initMap(): Promise<any> {
+        const currentPosition = await this.geoLocationService.getCurrentPosition();
+        const latLng = new google.maps.LatLng(currentPosition.coords.latitude, currentPosition.coords.longitude);
 
-    private initMap(): Promise<any> {
-
-        return new Promise((resolve, reject) => {
-
-            Geolocation.getCurrentPosition().then((position) => {
-
-                console.log(position);
-
-                const latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-                const mapOptions = {
-                    center: latLng,
-                    zoom: 15
-                };
-
-                this.map = new google.maps.Map(this.element.nativeElement, mapOptions);
-                resolve(true);
-
-            }, (err) => {
-
-                reject('Could not initialise map');
-
-            });
-
-        });
-
+        const mapOptions = {
+            center: latLng,
+            zoom: 15
+        };
+        this.map = new google.maps.Map(this.element.nativeElement, mapOptions);
     }
 
     public addMarker(lat: number, lng: number): void {
@@ -207,7 +122,6 @@ export class GoogleMapsComponent implements OnInit {
         });
 
         this.markers.push(marker);
-
     }
 
 }

@@ -3,7 +3,7 @@ import {RestApiPlatformService} from '../../rest-api/rest-api-platform.service';
 import {StorageService} from '../../common/utils/storage.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {IUser} from '../../common/models/User';
-import {PushNotificationsService} from '../../push-notifications/push-notifications.service';
+import {PushNotificationsService} from '../../common/push-notifications/push-notifications.service';
 
 @Component({
     selector: 'app-profile-register',

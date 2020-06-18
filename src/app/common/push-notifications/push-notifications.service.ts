@@ -5,8 +5,8 @@ import {
     PushNotificationToken,
     PushNotificationActionPerformed, Capacitor
 } from '@capacitor/core';
-import {RestApiPlatformService} from '../rest-api/rest-api-platform.service';
-import {StorageService} from '../common/utils/storage.service';
+import {RestApiPlatformService} from '../../rest-api/rest-api-platform.service';
+import {StorageService} from '../utils/storage.service';
 
 const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
 
