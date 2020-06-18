@@ -63,7 +63,7 @@ export class ProfileRegisterComponent implements OnInit {
         if (this.stepNumber < this.totalSteps) {
             return ['..', this.stepNumber + 1];
         }
-        return ['../..', 'final'];
+        return ['../../../../../../', 'tabs'];
     }
 
 

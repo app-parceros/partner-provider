@@ -1,14 +1,18 @@
-<ion-content [fullscreen]="true">
-    <div class="phone-register__header">
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <div class="phone-register__header">
         <ion-icon name="arrow-back"
                   [routerLink]="['../terms-and-conditions']">
         </ion-icon>
-        <p class="phone-register__header-title">
+        <ion-title class="p-title-default">
             {{ 'app_title' | translate}}
-        </p>
-    </div>
-    <div class="phone-register__content pp-app-content">
+        </ion-title>
+        </div>
+    </ion-toolbar>
+</ion-header>
 
+<ion-content [fullscreen]="true">
+    <div class="phone-register__content pp-app-content">
         <p class="phone-register__content-title">  {{ 'register.phone_register.title' | translate}}</p>
         <p>  {{ 'register.phone_register.comment' | translate}}</p>
 

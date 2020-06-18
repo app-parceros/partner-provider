@@ -1,12 +1,18 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <div class="code-register__header">
+            <ion-icon name="arrow-back"
+                      [routerLink]="['../../../phone']">
+            </ion-icon>
+            <ion-title class="p-title-default">
+                {{ 'app_title' | translate}}
+            </ion-title>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+
 <ion-content [fullscreen]="true">
-    <div class="code-register__header">
-        <ion-icon name="arrow-back"
-                  [routerLink]="['../../../phone']">
-        </ion-icon>
-        <p class="code-register__header-title">
-            {{ 'app_title' | translate}}
-        </p>
-    </div>
     <div class="code-register__content pp-app-content">
 
         <p class="code-register__content-title">  {{ 'register.code_register.title' | translate}}</p>

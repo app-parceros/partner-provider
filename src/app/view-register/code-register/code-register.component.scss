@@ -18,15 +18,10 @@
 
   }
 
-  &__header-title {
-    font-size: var(--app-font-size-subheading);
-    font-family: var(--app-font-family-secondary);
-    color: var(--ion-color-tertiary);
-    font-weight: 800;
-  }
 
   &__content {
-    height: calc(100% - 52px);
+    height: calc(100%);
+    min-height: 700px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;

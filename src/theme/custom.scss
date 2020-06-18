@@ -49,6 +49,10 @@ body {
 
   .p-title-default {
     font-family: 'UnicaOne', Helvetica, Arial sans-serif;
+    color: var(--ion-color-tertiary);
+    font-size: var(--app-font-size-subheading);
+    font-weight: 800;
+    padding: var(--app-space-inset-xs) var(--app-space-inset-m) var(--app-space-inset-xs) 0;
   }
 
   .button {
