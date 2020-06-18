@@ -69,4 +69,29 @@ body {
     font-size: var(--app-font-size-body);
   }
 
+  .tab-selected {
+    color: var(--ion-color-tertiary);
+
+    &:hover {
+      color: var(--ion-color-tertiary-shade);
+    }
+  }
+
+
+  .pp-app-header {
+    background: rgba(var(--ion-color-primary-rgb), 0.1);
+    display: flex;
+    padding: var(--app-space-inset-s) var(--app-space-inset-m);
+    font-size: var(--app-font-size-body);
+    align-items: center;
+
+    ion-icon {
+      color: var(--ion-color-tertiary-shade);
+      padding: var(--app-space-inset-xs) var(--app-space-inset-m) var(--app-space-inset-xs) 0;
+      cursor: pointer;
+      font-size: 28px;
+      z-index: 1;
+    }
+  }
+
 }

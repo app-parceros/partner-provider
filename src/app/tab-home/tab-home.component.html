@@ -1,8 +1,12 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
-        <ion-title class="p-title-default">
-            {{ 'tabs_home.title' | translate}}
-        </ion-title>
+        <div class="pp-app-header">
+            <ion-icon name="home">
+            </ion-icon>
+            <ion-title class="p-title-default">
+                {{ 'tabs_home.title' | translate}}
+            </ion-title>
+        </div>
     </ion-toolbar>
 </ion-header>
 
@@ -18,7 +22,8 @@
         </ion-item>
 
         <ion-item>
-        <ion-label>Gaming</ion-label>s
+            <ion-label>Gaming</ion-label>
+            s
             <ion-select value="brown" okText="Okay" cancelText="Dismiss">
                 <ion-select-option value="brown">Brown</ion-select-option>
                 <ion-select-option value="blonde">Blonde</ion-select-option>

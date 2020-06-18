@@ -8,7 +8,7 @@ import {TabSummaryRoutingModule} from './tab-summary-routing.module';
 import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
-    declarations: [],
+    declarations: [TabSummaryComponent],
     imports: [
         IonicModule,
         CommonModule,

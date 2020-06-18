@@ -1,15 +1,19 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
-        <ion-title class="p-title-default">
-            {{ 'tabs_available_favors.title' | translate}}
-        </ion-title>
+        <div class="pp-app-header">
+            <ion-icon name="file-tray-stacked">
+            </ion-icon>
+            <ion-title class="p-title-default">
+                {{ 'tabs_available_favors.title' | translate}}
+            </ion-title>
+        </div>
     </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
     <ion-list>
         <ion-item-sliding [routerLink]="'favor-detail'" *ngFor="let favor of favorsResultSet?.content">
-            <ion-item >
+            <ion-item>
                 <div class="favor-item">
                     <ion-icon src="assets/svg-icons/route.svg"></ion-icon>
                     <ion-img src="assets/imgs/arrow.png" class="favor-item__arrow"></ion-img>
