@@ -43,6 +43,8 @@ export class ProfileRegisterComponent implements OnInit {
     async updateProfile() {
         const autInfo = await this.storage.getItem<any>('authInfo') || {};
         const notificationToken = await this.pushNotificationsService.initConfiguration();
+        autInfo.notificationToken = notificationToken;
+        await this.storage.setItem('userProfile', this.userProfile);
         this.platformService.updateUserProfile(
             autInfo.userId,
             {

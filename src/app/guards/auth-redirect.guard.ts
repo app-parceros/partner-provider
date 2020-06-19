@@ -11,9 +11,13 @@ export class AuthRedirectGuard implements CanActivate {
 
     async canActivate(route: ActivatedRouteSnapshot): Promise<boolean> {
         console.log(route);
-        const authInfo = await this.storage.getItem('authInfo');
+        const authInfo: any = await this.storage.getItem('authInfo');
 
         if (!authInfo) {
+            await this.router.navigate(['register', 'terms-and-conditions']);
+            return false;
+        }
+        if (authInfo && !authInfo.notificationToken) {
             await this.router.navigate(['register', 'terms-and-conditions']);
             return false;
         }
