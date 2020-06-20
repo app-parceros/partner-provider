@@ -4,6 +4,8 @@ import {DOCUMENT} from '@angular/common';
 import {GeolocationPosition, Plugins} from '@capacitor/core';
 import {Observable} from "rxjs";
 import {GeoLocationService} from "../../common/geo-location/geo-location.service";
+import DirectionsWaypoint = google.maps.DirectionsWaypoint;
+import DirectionsRequest = google.maps.DirectionsRequest;
 
 const {Network} = Plugins;
 
@@ -20,6 +22,7 @@ export class GoogleMapsComponent implements OnInit {
     public markers: any[] = [];
     private mapsLoaded = false;
     private networkHandler = null;
+    public waypoints: any[] = [];
 
     constructor(private renderer: Renderer2,
                 private element: ElementRef,
@@ -115,17 +118,40 @@ export class GoogleMapsComponent implements OnInit {
 
     public addMarker(lat: number, lng: number): void {
         const latLng = new google.maps.LatLng(lat, lng);
-        console.log('lat', lat);
-        console.log('lng', lng);
-        const marker = new google.maps.Marker({
-            map: this.map,
-            animation: google.maps.Animation.DROP,
-            position: latLng,
-            // icon,
-            // label: 'Doña jimena'
+        const marker = new google.maps.Marker(
+            {
+                map: this.map,
+                animation: google.maps.Animation.DROP,
+                position: latLng
+            }
+        );
+        this.markers.push(marker);
+    }
+
+
+    async calculateRoute(directionsWaypoint?: DirectionsWaypoint []) {
+        const directionsService = new google.maps.DirectionsService();
+        const directionsDisplay = new google.maps.DirectionsRenderer();
+
+        // this.map.fitBounds(this.bounds);
+        const request: DirectionsRequest = {
+            origin: new google.maps.LatLng(4.725758098247824, -74.03076787201972),
+            destination: new google.maps.LatLng(4.735758098247824, -74.04076787201972),
+            waypoints: this.waypoints,
+            optimizeWaypoints: true,
+            travelMode: google.maps.TravelMode.DRIVING,
+            avoidTolls: true
+        };
+
+        directionsService.route(request, (response, status) => {
+            if (status === google.maps.DirectionsStatus.OK) {
+                console.log(response);
+                // directionsDisplay.setDirections(response);
+            } else {
+                alert('Could not display directions due to: ' + status);
+            }
         });
 
-        this.markers.push(marker);
     }
 
 }

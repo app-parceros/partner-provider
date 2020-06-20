@@ -52,5 +52,9 @@ export class RestApiPlatformService {
         return this.httpClient.post<IFavor>(url, credentials).toPromise();
     }
 
+    async getFavorDetail(favorId: Guid): Promise<IFavor> {
+        const url = `${this.platformConfig.apiUrl}/api/favor/${favorId}`;
+        return this.httpClient.get<any>(url).toPromise();
+    }
 
 }

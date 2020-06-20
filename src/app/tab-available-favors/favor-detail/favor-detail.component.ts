@@ -31,4 +31,14 @@ export class FavorDetailComponent implements OnInit {
         };
         await this.platformService.createFavor(favor);
     }
+
+    async includeFavorMarkers() {
+        const favorDetail = await this.platformService.getFavorDetail('favor');
+        for (const step of favorDetail.steps) {
+            const lng = step.position.lng;
+            const lat = step.position.lat;
+            this.mapComponent.addMarker(lat, lng);
+        }
+    }
+
 }
