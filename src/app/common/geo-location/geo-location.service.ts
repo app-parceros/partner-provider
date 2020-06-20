@@ -1,21 +1,28 @@
 import {Injectable} from '@angular/core';
-import {Capacitor, GeolocationPosition, Plugins} from '@capacitor/core';
+import {GeolocationPosition, Plugins} from '@capacitor/core';
 import {StorageService} from '../utils/storage.service';
 import {Observable} from 'rxjs';
 
-const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
-const {PushNotifications, Modals, Geolocation, Network} = Plugins;
+const {Geolocation} = Plugins;
 
 @Injectable({
     providedIn: 'root'
 })
 export class GeoLocationService {
-    constructor(
-        private storage: StorageService) {
+    private currentPosition: GeolocationPosition;
+
+    constructor(private storage: StorageService) {
     }
 
-    public getCurrentPosition(): Promise<GeolocationPosition> {
-        return Geolocation.getCurrentPosition();
+    public async getCurrentPosition(): Promise<GeolocationPosition> {
+        if (!(this.currentPosition && this.currentPosition.coords)) {
+            try {
+                this.currentPosition = await Geolocation.getCurrentPosition();
+            } catch (e) {
+                console.log('Error getting current position');
+            }
+        }
+        return this.currentPosition;
     }
 
 
@@ -28,7 +35,10 @@ export class GeoLocationService {
                     timeout: 500
                 }, async (position) => {
                     console.log('in watch ..', (new Date()), position);
-                    observer.next(position);
+                    if (position && position.coords) {
+                        this.currentPosition = position;
+                        observer.next(position);
+                    }
                 });
             });
         // .pipe(debounceTime(1200000));

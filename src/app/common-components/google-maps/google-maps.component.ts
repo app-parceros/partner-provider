@@ -1,8 +1,9 @@
 /// <reference types='@types/googlemaps' />
 import {Component, ElementRef, Inject, Input, OnInit, Renderer2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {Plugins} from '@capacitor/core';
-import {GeoLocationService} from '../../common/geo-location/geo-location.service';
+import {GeolocationPosition, Plugins} from '@capacitor/core';
+import {Observable} from "rxjs";
+import {GeoLocationService} from "../../common/geo-location/geo-location.service";
 
 const {Network} = Plugins;
 
@@ -22,8 +23,8 @@ export class GoogleMapsComponent implements OnInit {
 
     constructor(private renderer: Renderer2,
                 private element: ElementRef,
-                @Inject(DOCUMENT) private document,
-                private geoLocationService: GeoLocationService) {
+                private geoLocationService: GeoLocationService,
+                @Inject(DOCUMENT) private document) {
 
     }
 
@@ -51,13 +52,13 @@ export class GoogleMapsComponent implements OnInit {
     }
 
     private async loadSDK(): Promise<any> {
-        console.log('Loading Google Maps SDK');
         if (!this.mapsLoaded) {
             let status;
             try {
                 status = await Network.getStatus();
                 if (status.connected) {
                     await this.injectSDK();
+                    console.log('SDK ready.');
                 } else {
                     if (this.networkHandler == null) {
                         this.networkHandler = Network.addListener('networkStatusChange', async (status2) => {
@@ -74,6 +75,7 @@ export class GoogleMapsComponent implements OnInit {
                 // NOTE: navigator.onLine temporarily required until Network plugin has web implementation
                 if (navigator.onLine) {
                     await this.injectSDK();
+                    console.log('SDK ready. navigator.onLine');
                 } else {
                     console.warn('Not online');
                 }
@@ -99,8 +101,10 @@ export class GoogleMapsComponent implements OnInit {
 
 
     private async initMap(): Promise<any> {
-        const currentPosition = await this.geoLocationService.getCurrentPosition();
-        const latLng = new google.maps.LatLng(currentPosition.coords.latitude, currentPosition.coords.longitude);
+        const currentPosition: any = await this.geoLocationService.getCurrentPosition();
+        const latLng = new google.maps.LatLng(
+            currentPosition.coords.latitude,
+            currentPosition.coords.longitude);
 
         const mapOptions = {
             center: latLng,
