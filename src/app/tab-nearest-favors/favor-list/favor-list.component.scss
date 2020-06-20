@@ -1,23 +1,28 @@
-@import '../../theme/variables.scss';
+@import '../../../theme/variables.scss';
 
 .favor-item {
   display: flex;
-  background: #ff000038;
+  /*background: #ff000038;*/
   height: 100%;
   width: 100%;
   align-items: center;
+  color: #8D8D9D;
+  font-size: var(--app-font-size-body);
+  padding: var(--app-space-inset-m) var(--app-space-inset-xs);
 
   &__icon {
-    width: 10%;
+    width: 20%;
+    color: rgb(160, 167, 203);
+    font-size: 32px;
   }
 
-  &__arrow {
+  &__link {
     width: 10%;
   }
 
   &__reward {
     height: 100%;
-    background:  var(--ion-color-tertiary);
+    /*background: var(--ion-color-tertiary);*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +32,7 @@
 
   &__distance {
     height: 100%;
-    background: var(--ion-color-secondary);
+    /* background: var(--ion-color-secondary);*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,7 +42,7 @@
 
   &__time {
     height: 100%;
-    background: #46cb9c;
+    /*background: #46cb9c;*/
     display: flex;
     justify-content: center;
     align-items: center;

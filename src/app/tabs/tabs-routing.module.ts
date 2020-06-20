@@ -13,9 +13,9 @@ const routes: Routes = [
                     .then(m => m.TabCurrentFavorModule)
             },
             {
-                path: 'available-favors',
-                loadChildren: () => import('../tab-available-favors/tab-available-favors.module')
-                    .then(m => m.TabAvailableFavorsModule)
+                path: 'nearest-favors',
+                loadChildren: () => import('../tab-nearest-favors/tab-nearest-favors.module')
+                    .then(m => m.TabNearestFavorsModule)
             },
 
             {
