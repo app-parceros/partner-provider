@@ -2,8 +2,8 @@
 import {Component, ElementRef, Inject, Input, OnInit, Renderer2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {GeolocationPosition, Plugins} from '@capacitor/core';
-import {Observable} from "rxjs";
-import {GeoLocationService} from "../../common/geo-location/geo-location.service";
+import {Observable} from 'rxjs';
+import {GeoLocationService} from '../../common/geo-location/geo-location.service';
 import DirectionsWaypoint = google.maps.DirectionsWaypoint;
 import DirectionsRequest = google.maps.DirectionsRequest;
 
@@ -22,7 +22,6 @@ export class GoogleMapsComponent implements OnInit {
     public markers: any[] = [];
     private mapsLoaded = false;
     private networkHandler = null;
-    public waypoints: any[] = [];
 
     constructor(private renderer: Renderer2,
                 private element: ElementRef,
@@ -129,15 +128,16 @@ export class GoogleMapsComponent implements OnInit {
     }
 
 
-    async calculateRoute(directionsWaypoint?: DirectionsWaypoint []) {
+    async calculateRoute(directionsWaypoints?: DirectionsWaypoint []) {
+        console.log('calculateRoute', directionsWaypoints);
         const directionsService = new google.maps.DirectionsService();
         const directionsDisplay = new google.maps.DirectionsRenderer();
 
         // this.map.fitBounds(this.bounds);
         const request: DirectionsRequest = {
-            origin: new google.maps.LatLng(4.725758098247824, -74.03076787201972),
-            destination: new google.maps.LatLng(4.735758098247824, -74.04076787201972),
-            waypoints: this.waypoints,
+            /*origin: new google.maps.LatLng(4.725758098247824, -74.03076787201972),
+            destination: new google.maps.LatLng(4.735758098247824, -74.04076787201972),*/
+            waypoints: directionsWaypoints,
             optimizeWaypoints: true,
             travelMode: google.maps.TravelMode.DRIVING,
             avoidTolls: true
@@ -145,8 +145,8 @@ export class GoogleMapsComponent implements OnInit {
 
         directionsService.route(request, (response, status) => {
             if (status === google.maps.DirectionsStatus.OK) {
-                console.log(response);
-                // directionsDisplay.setDirections(response);
+                console.log('DirectionsStatus ', response);
+                directionsDisplay.setDirections(response);
             } else {
                 alert('Could not display directions due to: ' + status);
             }

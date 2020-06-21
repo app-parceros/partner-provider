@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {GoogleMapsComponent} from '../../common-components/google-maps/google-maps.component';
 import {RestApiPlatformService} from '../../rest-api/rest-api-platform.service';
 import {IFavor} from '../../common/models/Favor';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-favor-detail',
@@ -40,11 +40,16 @@ export class FavorDetailComponent implements OnInit {
 
     async includeFavorMarkers() {
         const favorDetail = await this.platformService.getFavorDetail(this.favorId);
+        const favorWayPoint: any[] = [];
         for (const step of favorDetail.steps) {
             const lng = step.position.lng;
             const lat = step.position.lat;
             this.mapComponent.addMarker(lat, lng);
+            favorWayPoint.push({
+                location: {lat: step.position.lat, lng: step.position.lng}
+            });
         }
+        await this.mapComponent.calculateRoute(favorWayPoint);
     }
 
 }
