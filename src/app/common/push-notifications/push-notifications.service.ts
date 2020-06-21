@@ -1,4 +1,4 @@
-import {Inject, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
     Plugins,
     PushNotification,
@@ -7,11 +7,12 @@ import {
 } from '@capacitor/core';
 import {RestApiPlatformService} from '../../rest-api/rest-api-platform.service';
 import {StorageService} from '../utils/storage.service';
+import {Router} from '@angular/router';
 
 const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
 
 
-const {PushNotifications, Modals, Geolocation} = Plugins;
+const {PushNotifications, Modals} = Plugins;
 
 @Injectable({
     providedIn: 'root'
@@ -21,6 +22,7 @@ export class PushNotificationsService {
     private notificationToken: PushNotificationToken;
 
     constructor(private platformService: RestApiPlatformService,
+                private router: Router,
                 private storage: StorageService) {
     }
 
@@ -67,9 +69,15 @@ export class PushNotificationsService {
 
                 // Method called when tapping on a notification
                 PushNotifications.addListener('pushNotificationActionPerformed',
-                    (notification: PushNotificationActionPerformed) => {
-                        alert('Push action performed: ' + JSON.stringify(notification));
-                        console.log('Push action performed: ' + notification);
+                    (action: PushNotificationActionPerformed) => {
+                        if (action?.notification?.data) {
+                            const data = action?.notification?.data;
+                            if (data && data.favorId) { // todo: define custom action
+                                this.router.navigate(['tabs', 'nearest-favors', 'favor', data.favorId]).then();
+                            } else {
+                                // other nav
+                            }
+                        }
                     }
                 );
             } else {
@@ -79,5 +87,9 @@ export class PushNotificationsService {
             }
         });
         return registration;
+    }
+
+    getNotificationToken(): PushNotificationToken {
+        return this.notificationToken;
     }
 }

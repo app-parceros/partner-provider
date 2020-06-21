@@ -12,7 +12,8 @@
 
   &__icon {
     width: 20%;
-    color: rgb(160, 167, 203);
+    color: var(--ion-color-secondary-tint);
+    /*color: rgb(160, 167, 203);*/
     font-size: 32px;
   }
 

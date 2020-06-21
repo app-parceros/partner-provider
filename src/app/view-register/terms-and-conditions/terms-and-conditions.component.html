@@ -10,6 +10,8 @@
     <div class="terms-and-conditions__content pp-app-content">
         <p>  {{ 'register.terms_and_conditions.description_conditions' | translate}}</p>
         <p class="pp-app-text-link">  {{ 'register.terms_and_conditions.conditions_link' | translate}}</p>
+        <p class="pp-app-text-link"
+           [routerLink]="'../../tabs/home'">  {{ 'register.terms_and_conditions.conditions_link' | translate}}</p>
         <ion-button [routerLink]="'../phone'"
                     color="tertiary"
                     class="pp-app-button-l">

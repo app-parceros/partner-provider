@@ -5,16 +5,16 @@ import {FavorListComponent} from './favor-list/favor-list.component';
 
 const routes: Routes = [
     {
-        path: 'favor-list',
+        path: 'favor',
         component: FavorListComponent
     },
     {
-        path: 'favor-detail',
+        path: 'favor/:favorId',
         component: FavorDetailComponent
     },
     {
         path: '',
-        redirectTo: 'favor-list',
+        redirectTo: 'favor',
         pathMatch: 'full'
     }
 ];

@@ -17,28 +17,29 @@
                 pullingText="Pull to refresh"
                 refreshingSpinner="circles"
                 refreshingText="Refreshing...">-->
-            <ion-list>
-                <ion-item-sliding [routerLink]="'../favor-detail'"
-                                  *ngFor="let favor of favorsResultSet?.content">
-                    <ion-item>
-                        <div class="favor-item">
-                            <ion-icon name="map-outline" class="favor-item__icon"></ion-icon>
-                            <!--<ion-icon name="chevron-forward-outline" class="favor-item__link"></ion-icon>-->
-                            <ion-label class="favor-item__reward">$20.000</ion-label>
-                            <ion-label class="favor-item__distance">10Km</ion-label>
-                            <ion-label class="favor-item__time">50min</ion-label>
-                            <!--<ion-label>{{favor.name}}</ion-label>
-                            <ion-text>{{favor.description}}</ion-text>-->
-                        </div>
-                    </ion-item>
-                    <ion-item-options side="end">
-                        <ion-item-option (click)="takeFavor(favor)">Take</ion-item-option>
-                    </ion-item-options>
-                </ion-item-sliding>
-            </ion-list>
+    <ion-list>
+        <div *ngFor="let favor of favorsResultSet?.content">
+            <ion-item-sliding [routerLink]="'../favor/'+favor.id">
+                <ion-item>
+                    <div class="favor-item">
+                        <ion-icon name="map-outline" class="favor-item__icon"></ion-icon>
+                        <!--<ion-icon name="chevron-forward-outline" class="favor-item__link"></ion-icon>-->
+                        <ion-label class="favor-item__reward">$20.000</ion-label>
+                        <ion-label class="favor-item__distance">10Km</ion-label>
+                        <ion-label class="favor-item__time">50min</ion-label>
+                        <!--<ion-label>{{favor.name}}</ion-label>
+                        <ion-text>{{favor.description}}</ion-text>-->
+                    </div>
+                </ion-item>
+                <ion-item-options side="end">
+                    <ion-item-option (click)="takeFavor(favor)">Take</ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+        </div>
+    </ion-list>
 
-            <!--<button [routerLink]="'favor-detail'"> view detail</button>-->
+    <!--<button [routerLink]="'favor-detail'"> view detail</button>-->
 
-        <!--</ion-refresher-content>
-    </ion-refresher>-->
+    <!--</ion-refresher-content>
+</ion-refresher>-->
 </ion-content>

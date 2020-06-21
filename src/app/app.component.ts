@@ -2,15 +2,10 @@ import {Component} from '@angular/core';
 import {Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
-import {Plugins, PushNotificationToken} from '@capacitor/core';
 import {RestApiPlatformService} from './rest-api/rest-api-platform.service';
 import {PushNotificationsService} from './common/push-notifications/push-notifications.service';
 import {TranslateService} from '@ngx-translate/core';
-import {StorageService} from "./common/utils/storage.service";
-import {debounceTime} from "rxjs/operators";
-import {Observable} from "rxjs";
-
-const {Geolocation} = Plugins;
+import {StorageService} from './common/utils/storage.service';
 
 @Component({
     selector: 'app-root',
@@ -18,7 +13,6 @@ const {Geolocation} = Plugins;
     styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-    private token: PushNotificationToken;
 
     constructor(
         private platform: Platform,
@@ -41,7 +35,7 @@ export class AppComponent {
         // this.checkDarkTheme();
         console.log('Initializing HomePage');
         this.translateService.use('es');
-        // this.pushNotificationsService.initConfiguration().then();
+        this.pushNotificationsService.initConfiguration().then();
     }
 
     checkDarkTheme() {

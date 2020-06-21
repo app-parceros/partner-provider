@@ -21,10 +21,10 @@ export class AuthRedirectGuard implements CanActivate {
                 await this.router.navigate(['register', 'terms-and-conditions']);
                 return false;
             }
-            if (authInfo && !authInfo.notificationToken) {
+           /* if (authInfo && !authInfo.notificationToken) {
                 await this.router.navigate(['register', 'terms-and-conditions']);
                 return false;
-            }
+            }*/
         }
         return true;
     }
