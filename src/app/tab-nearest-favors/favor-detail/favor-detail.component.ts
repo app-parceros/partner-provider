@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {GoogleMapsComponent} from '../../common-components/google-maps/google-maps.component';
 import {RestApiPlatformService} from '../../rest-api/rest-api-platform.service';
 import {IFavor} from '../../common/models/Favor';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'app-favor-detail',
@@ -9,12 +10,17 @@ import {IFavor} from '../../common/models/Favor';
     styleUrls: ['./favor-detail.component.scss'],
 })
 export class FavorDetailComponent implements OnInit {
+    private favorId;
     @ViewChild(GoogleMapsComponent) mapComponent: GoogleMapsComponent;
 
-    constructor(private readonly  platformService: RestApiPlatformService) {
+
+    constructor(private readonly  platformService: RestApiPlatformService,
+                private activatedRoute: ActivatedRoute) {
     }
 
-    ngOnInit() {
+    async ngOnInit() {
+        this.favorId = this.activatedRoute.snapshot.paramMap.get('favorId');
+        await this.includeFavorMarkers();
     }
 
     async addMarker() {
@@ -33,7 +39,7 @@ export class FavorDetailComponent implements OnInit {
     }
 
     async includeFavorMarkers() {
-        const favorDetail = await this.platformService.getFavorDetail('favor');
+        const favorDetail = await this.platformService.getFavorDetail(this.favorId);
         for (const step of favorDetail.steps) {
             const lng = step.position.lng;
             const lat = step.position.lat;

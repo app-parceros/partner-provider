@@ -5,3 +5,21 @@ app-google-maps {
   height: 100%;
 
 }
+
+.favor-detail {
+  &__header {
+    background: rgba(var(--ion-color-primary-rgb), 0.1);
+    display: flex;
+    padding: var(--app-space-inset-s) var(--app-space-inset-m);
+    font-size: var(--app-font-size-body);
+    align-items: center;
+
+    ion-icon {
+      color: rgba(var(--ion-color-primary-rgb), 0.5);;
+      padding: var(--app-space-inset-xs) var(--app-space-inset-m) var(--app-space-inset-xs) 0;
+      cursor: pointer;
+      font-size: 28px;
+      z-index: 1;
+    }
+  }
+}

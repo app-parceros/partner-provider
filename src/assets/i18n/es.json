@@ -50,8 +50,9 @@
       }
     }
   },
-  "tabs_available_favors": {
-    "title": "Disponibles"
+  "tabs_nearest_favors": {
+    "title": "Disponibles",
+    "favor_detail": "Detalle del favor"
   },
   "tabs_current_favor": {
     "title": "En curso"
