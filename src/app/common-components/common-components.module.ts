@@ -1,17 +1,22 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {GoogleMapsComponent} from './google-maps/google-maps.component';
+import {LoadingComponent} from './loading/loading.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
     declarations: [
-        GoogleMapsComponent
+        GoogleMapsComponent,
+        LoadingComponent
     ],
     exports: [
-        GoogleMapsComponent
+        GoogleMapsComponent,
+        LoadingComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        TranslateModule
     ]
 })
 export class CommonComponentsModule {
