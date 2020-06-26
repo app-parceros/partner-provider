@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {GoogleMapsComponent} from './google-maps/google-maps.component';
 import {LoadingComponent} from './loading/loading.component';
 import {TranslateModule} from '@ngx-translate/core';
+import {IonicModule} from "@ionic/angular";
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {TranslateModule} from '@ngx-translate/core';
     ],
     imports: [
         CommonModule,
-        TranslateModule
+        TranslateModule,
+        IonicModule
     ]
 })
 export class CommonComponentsModule {
