@@ -25,8 +25,8 @@ export class FavorListComponent implements OnInit {
     async loadNearestFavors() {
         const currentPosition = await this.geoLocationService.getCurrentPosition();
         this.favorsResultSet = await this.platformService.getFavors({
-            lat: currentPosition.coords.latitude,
-            lng: currentPosition.coords.longitude
+            lat: 4.70557962,
+            lng: -74.02690778
         });
     }
 

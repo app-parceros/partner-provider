@@ -5,7 +5,10 @@ import {PushNotificationToken} from '@capacitor/core';
 import {ResultSet} from '../common/models/ResultSet';
 import {IFavor} from '../common/models/Favor';
 import {IPosition} from '../common/models/Location';
-import {IUser} from "../common/models/User";
+import {IUser} from '../common/models/User';
+import {ConnectionStatus, NetworkService} from '../common/utils/network.service';
+import {StorageService} from '../common/utils/storage.service';
+import {map, tap} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +17,7 @@ export class RestApiPlatformService {
 
     constructor(
         @Inject('platformConfig') private platformConfig: PlatformConfig,
-        private httpClient: HttpClient) {
+        private httpClient: HttpClient, private network: NetworkService, private store: StorageService) {
     }
 
     registerNotificationToken(userId: Guid, token: any) {
@@ -33,8 +36,17 @@ export class RestApiPlatformService {
     }
 
     getFavors(position: any): Promise<ResultSet<IFavor>> {
-        const url = `${this.platformConfig.apiUrl}/api/favor?lat=${position.lat}&lng=${position.lng}&radius=1380`;
-        return this.httpClient.get<any>(url).toPromise();
+        if (this.network.getCurrentNetworkStatus() === ConnectionStatus.Offline ){
+            return this.store.getItem('favors');
+        }else {
+            const url = `${this.platformConfig.apiUrl}/api/favor?lat=${position.lat}&lng=${position.lng}&radius=1380`;
+            return this.httpClient.get<any>(url).pipe(
+                map(resp => resp),
+                tap(res => {
+                    this.store.setItem('favors', res);
+                })
+            ).toPromise();
+        }
     }
 
     async createFavor(favor: IFavor) {
