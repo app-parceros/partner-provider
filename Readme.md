@@ -18,4 +18,6 @@ To run the app follow these next steps:
 - Copy file google-services.json to /android/app/src
 - Open Android Studio and run the App
 
+### instruciones español
+
 
