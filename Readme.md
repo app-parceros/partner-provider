@@ -20,4 +20,23 @@ To run the app follow these next steps:
 
 ### instruciones español
 
+Para ejecutar la aplicación, siga estos pasos siguientes:
+
+### Primera paso 
+ Vaya a la consola de su equipo y ejecute:
+ 
+-Ejecutar ´npm install´ para instalar dependencias del proyecto
+-Ejecutar npm install -g ionicpara instalar la herramienta iónica como dependencia global
+
+### Mostrar la aplicación como modo de depuración
+Ejecutar ionic servedentro del directorio de la aplicación para ver su aplicación en el navegador
+Mostrar la aplicación en el emulador o dispositivo físico
+Ejecutar npm run buildpara compilar y generar / s-partner / www
+Ejecutar npx cap update androidpara agregar un proyecto nativo de iOS o Android con Capacitor, o ejecutar ionic capacitor addpor primera vez
+Ejecute ionic capacitor copy androidpara actualizar el proyecto de Android con Capacitor
+Ejecutar gradlew assembleDebugsobre la carpeta de Android, para compilar Android y generar .apk
+Genere el icono de su aplicación y las pantallas de bienvenida usando cordova-res --skip-config --copy
+Copie el archivo google-services.json a / android / app / src
+Abra Android Studio y ejecute la aplicación
+
 
