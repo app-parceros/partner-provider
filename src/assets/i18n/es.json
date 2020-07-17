@@ -14,7 +14,10 @@
     "phone_register": {
       "title": "Verifica tu número",
       "comment": "Ingresa tu número de celular, enviaremos un mensaje SMS para validarlo y continuar el registro",
-      "action_name": "Enviar"
+      "action_name": "Enviar",
+      "alert_header": "¡Número erroneo!",
+      "alert_message": "Ingresa un número con 10 digitos y que corresponda al formato usado en Colombia",
+      "alert_button": "Intentar de nuevo"
     },
     "code_register": {
       "title": "Verifica tu número",
