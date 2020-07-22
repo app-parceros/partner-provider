@@ -11,8 +11,6 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class PhoneRegisterComponent implements OnInit {
     public phoneNumber: number;
-    validPrefix = ['30', '31', '32', '35'];
-
     constructor(
         private platformService: RestApiPlatformService,
         private msgWrongNumber: AlertController,

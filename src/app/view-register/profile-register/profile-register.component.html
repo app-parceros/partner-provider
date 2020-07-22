@@ -57,10 +57,11 @@
                 <ion-select [(ngModel)]="userProfile.identificationType"
                             okText="{{'action.ok' | translate}}"
                             cancelText="{{'action.cancel' | translate}}">
-                    <ion-select-option value="cc">CC</ion-select-option>
-                    <ion-select-option value="xxx">XXX</ion-select-option>
-                    <ion-select-option value="yyy">YYY</ion-select-option>
-                    <ion-select-option value="ppp">PPP</ion-select-option>
+                    <ion-select-option value="CC">Cédula de Ciudadanía</ion-select-option>
+                    <ion-select-option value="CE">Cedula de Extranjería</ion-select-option>
+                    <ion-select-option value="TI">Tarjeta de Identidad</ion-select-option>
+                    <ion-select-option value="PA">Pasaporte</ion-select-option>
+                    <ion-select-option value="PEP">PEP</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item>
@@ -68,6 +69,13 @@
                         position="stacked">{{'register.profile_register.identification.label' | translate}}</ion-label>
                 <ion-input [placeholder]="'register.profile_register.identification.label' | translate"
                            [(ngModel)]="userProfile.identification">
+                    <form action="/action_page.php">
+                        <label for="country_code">Country code:</label>
+                        <input type="text" id="country_code"
+                        ="country_code"
+                               pattern="[A-Za-z]{3}" title="Three letter country code"><br><br>
+                        <input type="submit">
+                    </form>
                 </ion-input>
             </ion-item>
         </ng-template>

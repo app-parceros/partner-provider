@@ -22,7 +22,10 @@
     "code_register": {
       "title": "Verifica tu número",
       "comment": "Ingresa el número de verificación que enviamos a tu celular",
-      "action_name": "Enviar"
+      "action_name": "Enviar",
+      "alert_header": "¡Código erroneo!",
+      "alert_message": "Ingresa un número con 6 digitos y que corresponda al enviado",
+      "alert_button": "Intentar de nuevo"
     },
     "profile_register": {
       "title": "Algunos datos mas",
