@@ -69,13 +69,6 @@
                         position="stacked">{{'register.profile_register.identification.label' | translate}}</ion-label>
                 <ion-input [placeholder]="'register.profile_register.identification.label' | translate"
                            [(ngModel)]="userProfile.identification">
-                    <form action="/action_page.php">
-                        <label for="country_code">Country code:</label>
-                        <input type="text" id="country_code"
-                        ="country_code"
-                               pattern="[A-Za-z]{3}" title="Three letter country code"><br><br>
-                        <input type="submit">
-                    </form>
                 </ion-input>
             </ion-item>
         </ng-template>
@@ -86,8 +79,7 @@
 
         <!-- ************** Buttons ********************* -->
         <ng-template [ngIf]="stepNumber < totalSteps">
-            <ion-button [routerLink]="getNexRouterLink()"
-                        (click)="onNext()"
+            <ion-button (click)="onNext()"
                         color="tertiary"
                         class="pp-app-button-l">
                 {{'register.profile_register.action_name' | translate}}

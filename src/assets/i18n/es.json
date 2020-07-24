@@ -34,6 +34,11 @@
       "comment_done": "Genial! Has completado el registro como parcero, realizaremos el estudio y te notificaremos el resultado en el transcurso de 24 horas",
       "action_name": "Continuar",
       "action_done": "Entendido",
+      "alert_header": "Información erronea",
+      "alert_msg_names": "Los nombres y apellidos solo deben contener letras. No se admiten números o caracteres especiales",
+      "alert_msg_email": "El email ingresado debe tener el formato \"ejemplo@dominio.com\"",
+      "alert_msg_id": "La identificación unicamente debe contener números. No se admiten letras o caracteres especiales",
+      "alert_button": "Intentar de nuevo",
       "name": {
         "label": "Nombres",
         "placeholder": "ej. Pedro Alejandro"
