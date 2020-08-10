@@ -3,7 +3,7 @@ import {RestApiPlatformService} from '../../rest-api/rest-api-platform.service';
 import {AlertController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
-import {RegexTypes} from "../../RegexTypes";
+import {RegexTypes} from '../../common/utils/RegexTypes';
 
 @Component({
     selector: 'app-phone-register',

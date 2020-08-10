@@ -4,7 +4,7 @@ import {StorageService} from '../../common/utils/storage.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {IUser} from '../../common/models/User';
 import {PushNotificationsService} from '../../common/push-notifications/push-notifications.service';
-import {RegexTypes} from '../../RegexTypes';
+import {RegexTypes} from '../../common/utils/RegexTypes';
 import {TranslateService} from '@ngx-translate/core';
 import {AlertController} from '@ionic/angular';
 
