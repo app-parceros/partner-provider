@@ -21,6 +21,7 @@
             <ion-input type="tel"
                        required
                        maxlength="10"
+                       (ionInput)="onInput($event)"
                        placeholder="XXX XXX XXXX"
                        [(ngModel)]="phoneNumber"></ion-input>
         </ion-item>

@@ -3,6 +3,7 @@ import {RestApiPlatformService} from '../../rest-api/rest-api-platform.service';
 import {AlertController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import {RegexTypes} from "../../RegexTypes";
 
 @Component({
     selector: 'app-phone-register',
@@ -54,6 +55,17 @@ export class PhoneRegisterComponent implements OnInit {
             }
         );
         return textToShow;
+    }
+    onInput($event: any) {
+        const  key = $event.target.value;
+        console.log('evento' + key );
+        const regExp = new RegExp(RegexTypes.NUMBER_ONLY);
+        if ( !regExp.test(key) ) {
+            console.log('evento 2');
+            $event.target.value = $event.target.value.replace(/\D/g, '' );
+            $event.preventDefault();
+            return;
+        }
     }
 
 }
