@@ -1,8 +1,7 @@
 /// <reference types='@types/googlemaps' />
 import {Component, ElementRef, Inject, Input, OnInit, Renderer2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {GeolocationPosition, Plugins} from '@capacitor/core';
-import {Observable} from 'rxjs';
+import {Plugins} from '@capacitor/core';
 import {GeoLocationService} from '../../common/geo-location/geo-location.service';
 import DirectionsWaypoint = google.maps.DirectionsWaypoint;
 import DirectionsRequest = google.maps.DirectionsRequest;
@@ -22,6 +21,8 @@ export class GoogleMapsComponent implements OnInit {
     public markers: any[] = [];
     private mapsLoaded = false;
     private networkHandler = null;
+    private isInjectingSDK = false;
+    private injectingSDKPromise;
 
     constructor(private renderer: Renderer2,
                 private element: ElementRef,
@@ -89,16 +90,27 @@ export class GoogleMapsComponent implements OnInit {
     }
 
     private injectSDK(): Promise<any> {
-        return new Promise((resolve, reject) => {
-            window['mapInit'] = () => {
-                this.mapsLoaded = true;
-                resolve(true);
-            };
-            const script = this.renderer.createElement('script');
-            script.id = 'googleMaps';
-            script.src = 'https://partner-platform-dev.herokuapp.com/maps/api/js?&callback=mapInit';
-            this.renderer.appendChild(this.document.body, script);
-        });
+        if (!this.isInjectingSDK) {
+            this.isInjectingSDK = true;
+            this.injectingSDKPromise = new Promise((resolve, reject) => {
+                window['mapInit'] = () => {
+                    this.mapsLoaded = true;
+                    this.isInjectingSDK = false;
+                    window['googleInstance'] = google;
+                    resolve(true);
+                };
+
+                if (window['mapScript']) {
+                    this.renderer.removeChild(this.document.body, window['mapScript']);
+                }
+                const script = this.renderer.createElement('script');
+                window['mapScript'] = script;
+                script.id = 'googleMaps';
+                script.src = 'https://partner-platform-dev.herokuapp.com/maps/api/js?&callback=mapInit';
+                this.renderer.appendChild(this.document.body, script);
+            });
+        }
+        return this.injectingSDKPromise;
     }
 
 
@@ -115,13 +127,30 @@ export class GoogleMapsComponent implements OnInit {
         this.map = new google.maps.Map(this.element.nativeElement, mapOptions);
     }
 
-    public addMarker(lat: number, lng: number): void {
+    private async isSDKLoaded(): Promise<any> {
+        /*return new Promise((resolve, reject) => {
+            // window['mapInit'] = () => {
+                resolve(true);
+            // };
+        });*/
+
+        await this.init();
+    }
+
+    public async addMarker(lat: number, lng: number) {
+        await this.init();
         const latLng = new google.maps.LatLng(lat, lng);
+        const icon = {
+            url: './assets/imgs/map-marker-pin.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
         const marker = new google.maps.Marker(
             {
                 map: this.map,
                 animation: google.maps.Animation.DROP,
-                position: latLng
+                position: latLng,
+                icon,
+                label: 'chur'
             }
         );
         this.markers.push(marker);

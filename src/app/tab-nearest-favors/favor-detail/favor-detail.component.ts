@@ -45,11 +45,11 @@ export class FavorDetailComponent implements OnInit {
             const lng = step.position.lng;
             const lat = step.position.lat;
             this.mapComponent.addMarker(lat, lng);
-            favorWayPoint.push({
+           /* favorWayPoint.push({
                 location: {lat: step.position.lat, lng: step.position.lng}
-            });
+            });*/
         }
-        await this.mapComponent.calculateRoute(favorWayPoint);
+        // await this.mapComponent.calculateRoute(favorWayPoint);
     }
 
 }
