@@ -5,6 +5,8 @@ import {Plugins} from '@capacitor/core';
 import {GeoLocationService} from '../../common/geo-location/geo-location.service';
 import DirectionsWaypoint = google.maps.DirectionsWaypoint;
 import DirectionsRequest = google.maps.DirectionsRequest;
+import {IPosition} from "../../common/models/Location";
+import {IFavorStep} from "../../common/models/FavorStep";
 
 const {Network} = Plugins;
 
@@ -137,25 +139,50 @@ export class GoogleMapsComponent implements OnInit {
         await this.init();
     }
 
-    public async addMarker(lat: number, lng: number) {
+    public async addMarker(label: string, positions: IPosition[]) {
         await this.init();
-        const latLng = new google.maps.LatLng(lat, lng);
+
         const icon = {
             url: './assets/imgs/map-marker-pin.png',
             scaledSize: new google.maps.Size(50, 50)
         };
-        const marker = new google.maps.Marker(
-            {
-                map: this.map,
-                animation: google.maps.Animation.DROP,
-                position: latLng,
-                icon,
-                label: 'chur'
-            }
-        );
-        this.markers.push(marker);
+        for (const position of positions) {
+            const latLng = new google.maps.LatLng(position.lat, position.lng);
+            const marker = new google.maps.Marker(
+                {
+                    map: this.map,
+                    animation: google.maps.Animation.DROP,
+                    position: latLng,
+                    icon,
+                    label
+                }
+            );
+            this.markers.push(marker);
+        }
     }
 
+
+    public async addStepsMaker( steps: IFavorStep[]) {
+        await this.init();
+
+        const icon = {
+            url: './assets/imgs/map-marker-pin.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        for (const step of steps) {
+            const latLng = new google.maps.LatLng(step.position.lat, step.position.lng);
+            const marker = new google.maps.Marker(
+                {
+                    map: this.map,
+                    animation: google.maps.Animation.DROP,
+                    position: latLng,
+                    icon,
+                    label: step.description
+                }
+            );
+            this.markers.push(marker);
+        }
+    }
 
     async calculateRoute(directionsWaypoints?: DirectionsWaypoint []) {
         console.log('calculateRoute', directionsWaypoints);

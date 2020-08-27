@@ -1,4 +1,4 @@
-To run the app follow these next steps:
+npmTo run the app follow these next steps:
 
 ### First time
 

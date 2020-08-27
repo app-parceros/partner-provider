@@ -25,7 +25,7 @@ export class FavorDetailComponent implements OnInit {
 
     async addMarker() {
         const center = this.mapComponent.map.getCenter();
-        this.mapComponent.addMarker(center.lat(), center.lng());
+        this.mapComponent.addMarker('test', [{lng: center.lng(), lat: center.lat()}]);
         const favor: IFavor = {
             name: 'first favor',
             description: 'favor description',
@@ -40,15 +40,7 @@ export class FavorDetailComponent implements OnInit {
 
     async includeFavorMarkers() {
         const favorDetail = await this.platformService.getFavorDetail(this.favorId);
-        const favorWayPoint: any[] = [];
-        for (const step of favorDetail.steps) {
-            const lng = step.position.lng;
-            const lat = step.position.lat;
-            this.mapComponent.addMarker(lat, lng);
-           /* favorWayPoint.push({
-                location: {lat: step.position.lat, lng: step.position.lng}
-            });*/
-        }
+        await this.mapComponent.addStepsMaker(favorDetail.steps);
         // await this.mapComponent.calculateRoute(favorWayPoint);
     }
 
