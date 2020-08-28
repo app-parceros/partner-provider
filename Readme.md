@@ -13,8 +13,9 @@ npmTo run the app follow these next steps:
 - Run `npm run build` to compile and generate /s-partner/www
 - Run `npx cap update android` to add a native iOS or Android project using Capacitor,or run `ionic capacitor add` for the first time
 - Run `ionic capacitor copy android` to update Android project using Capacitor
-- Run `gradlew assembleDebug` over android folder, to compile Android and generate .apk
 - Generate your app icon and splash screens using `cordova-res --skip-config --copy`
+- Run `cd android` to open android folder 
+- Run `gradlew assembleDebug` over android folder, to compile Android and generate .apk
 - Copy file google-services.json to /android/app/src
 - Open Android Studio and run the App
 
